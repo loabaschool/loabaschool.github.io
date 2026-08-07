@@ -5,35 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loaba Nursery & Primary School, Mudivaithanendal</title>
 <style>
-
-
-.menu-toggle {
-  background:none; border:none; color:#fff; font-size:26px; cursor:pointer;
-}
-.side-menu {
-  position:fixed; top:0; right:-280px; width:260px; height:100%;
-  background:var(--green-dark); padding:70px 20px 20px;
-  transition:right 0.3s ease; z-index:1001; box-shadow:-4px 0 20px rgba(0,0,0,0.3);
-}
-.side-menu.open { right:0; }
-.side-menu a {
-  display:block; color:#fff; text-decoration:none; padding:14px 10px;
-  border-bottom:1px solid rgba(255,255,255,0.1); font-size:16px;
-}
-.side-menu a:hover { color:var(--gold); }
-.close-btn {
-  position:absolute; top:20px; right:20px; background:none; border:none;
-  color:#fff; font-size:24px; cursor:pointer;
-}
-.overlay {
-  display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(0,0,0,0.5); z-index:1000;
-}
-.overlay.show { display:block; }
-
-
-
-
   :root {
     --green: #0d4a3d;
     --green-dark: #08302a;
@@ -42,89 +13,114 @@
     --text: #2a2a2a;
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Segoe UI', system-ui, Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  body { 
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
   .topbar {
-    background:var(--gold); color:var(--green-dark); text-align:center;
-    padding:10px 15px; font-size:14px; font-weight:600;
-    display:flex; justify-content:center; align-items:center; gap:10px; flex-wrap:wrap;
+    background: var(--gold); color: var(--green-dark); text-align: center;
+    padding: 10px 15px; font-size: 14px; font-weight: 600;
+    display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;
   }
   .topbar a {
-    background:var(--green); color:#fff; padding:6px 16px; border-radius:20px;
-    text-decoration:none; font-weight:500; font-size:13px; transition:0.2s;
+    background: var(--green); color: #fff; padding: 6px 16px; border-radius: 20px;
+    text-decoration: none; font-weight: 500; font-size: 13px; transition: 0.2s;
   }
-  .topbar a:hover { background:var(--green-dark); }
+  .topbar a:hover { background: var(--green-dark); }
 
+  /* Header layout fix: Space between logo and menu toggle */
   header {
-    background:var(--green); color:#fff; padding:14px 20px;
-    display:flex; justify-content:space-between; align-items:center;
-    flex-wrap:wrap; border-bottom:3px solid var(--gold);
-    position:sticky; top:0; z-index:100;
+    background: var(--green); color: #fff; padding: 12px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
   }
-  .brand { display:flex; align-items:center; gap:12px; }
-  .brand img { height:46px; width:46px; border-radius:50%; }
-  .brand h2 { font-size:17px; font-weight:600; }
-  nav { display:flex; flex-wrap:wrap; gap:4px; }
-  nav a {
-    color:#fff; text-decoration:none; font-size:14px; padding:6px 10px;
-    border-radius:6px; transition:0.2s;
+
+  .brand { display: flex; align-items: center; }
+  /* Fixed logo dimensions so it doesn't stretch */
+  .brand img { height: 42px; width: auto; max-width: 180px; object-fit: contain; }
+
+  .menu-toggle {
+    background: none; border: none; color: #fff; font-size: 26px; cursor: pointer;
+    padding: 4px 8px;
   }
-  nav a:hover { background:rgba(255,255,255,0.15); color:var(--gold); }
+
+  .side-menu {
+    position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
+    background: var(--green-dark); padding: 70px 20px 20px;
+    transition: right 0.3s ease; z-index: 1001; box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+  }
+  .side-menu.open { right: 0; }
+  .side-menu a {
+    display: block; color: #fff; text-decoration: none; padding: 14px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 16px;
+  }
+  .side-menu a:hover { color: var(--gold); }
+  
+  .close-btn {
+    position: absolute; top: 20px; right: 20px; background: none; border: none;
+    color: #fff; font-size: 24px; cursor: pointer;
+  }
+  
+  .overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 1000;
+  }
+  .overlay.show { display: block; }
 
   .hero {
-    text-align:center; padding:60px 20px;
-    background:linear-gradient(135deg, var(--green), var(--green-dark));
-    color:#fff;
+    text-align: center; padding: 60px 20px;
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: #fff;
   }
-  .hero img { height:110px; margin-bottom:18px; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
-  .hero h1 { font-size:clamp(24px, 5vw, 36px); color:var(--gold); margin-bottom:10px; letter-spacing:0.5px; }
-  .hero p { font-size:16px; opacity:0.95; max-width:600px; margin:0 auto; }
+  .hero img { height: 110px; margin-bottom: 18px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+  .hero h1 { font-size: clamp(24px, 5vw, 36px); color: var(--gold); margin-bottom: 10px; letter-spacing: 0.5px; }
+  .hero p { font-size: 16px; opacity: 0.95; max-width: 600px; margin: 0 auto; }
 
-  section { max-width:960px; margin:0 auto; padding:45px 20px; }
+  section { max-width: 960px; margin: 0 auto; padding: 45px 20px; }
   .section-title {
-    color:var(--green); font-size:24px; margin-bottom:18px;
-    display:inline-flex; align-items:center; gap:10px;
+    color: var(--green); font-size: 24px; margin-bottom: 18px;
+    display: inline-flex; align-items: center; gap: 10px;
   }
   .section-title::after {
-    content:''; flex:1; height:3px; background:var(--gold); min-width:40px;
+    content: ''; flex: 1; height: 3px; background: var(--gold); min-width: 40px;
   }
-  section > p { margin-bottom:14px; color:#444; }
+  section > p { margin-bottom: 14px; color: #444; }
 
-  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:20px; margin-top:20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px; margin-top: 20px; }
   .card {
-    background:#fff; padding:24px; border-radius:12px;
-    border-top:4px solid var(--gold);
-    box-shadow:0 4px 16px rgba(0,0,0,0.06);
-    transition:transform 0.25s, box-shadow 0.25s;
+    background: #fff; padding: 24px; border-radius: 12px;
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
   }
-  .card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.1); }
-  .card h3 { color:var(--green); margin-bottom:10px; font-size:18px; }
-  .card p { color:#555; font-size:14.5px; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+  .card h3 { color: var(--green); margin-bottom: 10px; font-size: 18px; }
+  .card p { color: #555; font-size: 14.5px; }
 
   .quote-box {
-    background:#fff; border-left:5px solid var(--gold); border-radius:8px;
-    padding:20px 24px; margin:20px 0; box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    background: #fff; border-left: 5px solid var(--gold); border-radius: 8px;
+    padding: 20px 24px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
-  .quote-box strong { color:var(--green); }
+  .quote-box strong { color: var(--green); }
 
-  footer { background:var(--green-dark); color:#e8e8e8; padding:40px 20px 25px; text-align:center; }
-  footer img { height:60px; margin-bottom:16px; opacity:0.95; }
-  .contact-info p { margin-bottom:6px; font-size:14.5px; }
-  .contact-info a { color:var(--gold); text-decoration:none; }
-  .socials { margin:22px 0 10px; }
+  footer { background: var(--green-dark); color: #e8e8e8; padding: 40px 20px 25px; text-align: center; }
+  footer img { height: 60px; margin-bottom: 16px; opacity: 0.95; }
+  .contact-info p { margin-bottom: 6px; font-size: 14.5px; }
+  .contact-info a { color: var(--gold); text-decoration: none; }
+  .socials { margin: 22px 0 10px; }
   .socials a {
-    display:inline-flex; align-items:center; justify-content:center;
-    margin:0 6px; width:38px; height:38px; border-radius:50%;
-    background:var(--gold); color:var(--green-dark); font-weight:700;
-    text-decoration:none; font-size:14px; transition:0.2s;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin: 0 6px; width: 38px; height: 38px; border-radius: 50%;
+    background: var(--gold); color: var(--green-dark); font-weight: 700;
+    text-decoration: none; font-size: 14px; transition: 0.2s;
   }
-  .socials a:hover { background:#fff; }
-  .copyright { font-size:13px; opacity:0.7; margin-top:16px; }
-
-  @media(max-width:640px){
-    header { flex-direction:column; align-items:flex-start; gap:10px; }
-    nav { width:100%; justify-content:flex-start; }
-  }
+  .socials a:hover { background: #fff; }
+  .copyright { font-size: 13px; opacity: 0.7; margin-top: 16px; }
 </style>
 </head>
 <body>
@@ -134,18 +130,15 @@
   <a href="admission.html">Apply Now →</a>
 </div>
 
-
 <header>
   <div class="brand">
-    <img src="images/logo-s.png" alt="Loaba Nursery and Primary School" style="height:50px;width:100px">
+    <img src="images/logo-s.png" alt="Loaba Nursery and Primary School">
   </div>
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
 </header>
 
-
-
 <div class="side-menu" id="sideMenu">
-  <button class="close-btn" onclick="toggleMenu()">✕</button>
+  <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">✕</button>
   <a href="index.html">Home</a>
   <a href="about.html">About Us</a>
   <a href="admission.html">Admissions</a>
@@ -188,7 +181,6 @@
   </div>
 </section>
 
-
 <section>
   <h2 class="section-title">Reviews & Community</h2>
   <p>See what parents and the community are saying about us on Facebook.</p>
@@ -210,7 +202,6 @@
     </blockquote>
   </div>
 </section>
-
 
 <section>
   <h2 class="section-title">About Us</h2>
@@ -235,14 +226,12 @@
   <p class="copyright">© 2026 Loaba Nursery and Primary School. All rights reserved.</p>
 </footer>
 
-
 <script>
 function toggleMenu() {
   document.getElementById('sideMenu').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('show');
 }
 </script>
-
 
 </body>
 </html>
