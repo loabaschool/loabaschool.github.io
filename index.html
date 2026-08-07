@@ -182,65 +182,66 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  .blog-slider{
+    display:flex;
+    gap:20px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding:10px 5px;
+  }
 
-.blog-slider{
-  display:flex;
-  gap:20px;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-  padding:10px 5px;
-}
+  .blog-slider::-webkit-scrollbar{
+    height:8px;
+  }
 
-.blog-slider::-webkit-scrollbar{
-  height:8px;
-}
+  .blog-slider::-webkit-scrollbar-thumb{
+    background:var(--gold);
+    border-radius:20px;
+  }
 
-.blog-slider::-webkit-scrollbar-thumb{
-  background:var(--gold);
-  border-radius:20px;
-}
+  .news-card{
+    min-width:320px;
+    max-width:320px;
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+    flex-shrink:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 4px solid var(--gold);
+  }
 
-.news-card{
-  min-width:320px;
-  max-width:320px;
-  background:#fff;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 5px 15px rgba(0,0,0,.12);
-  flex-shrink:0;
-}
+  .news-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+  }
 
-.news-card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
+  .news-card-content{
+    padding:15px;
+  }
 
-.news-card-content{
-  padding:15px;
-}
+  .news-card h3{
+    color:var(--green);
+    font-size:18px;
+    margin:10px 0;
+  }
 
-.news-card h3{
-  color:var(--green);
-  font-size:18px;
-  margin:10px 0;
-}
+  .news-card p{
+    color:#555;
+    font-size:14px;
+  }
 
-.news-card p{
-  color:#555;
-  font-size:14px;
-}
-
-.news-tag{
-  display:inline-block;
-  background:var(--green);
-  color:#fff;
-  padding:4px 12px;
-  border-radius:20px;
-  font-size:12px;
-}
-
-
+  .news-tag{
+    display:inline-block;
+    background:var(--green);
+    color:#fff;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:12px;
+  }
 
   footer { background: var(--green-dark); color: #e8e8e8; padding: 40px 20px 25px; text-align: center; }
   footer img { height: 60px; margin-bottom: 16px; opacity: 0.95; }
@@ -315,17 +316,14 @@
   </div>
 </section>
 
-
-
 <section>
   <h2 class="section-title">Latest News & Blogs</h2>
+  <p>Read our latest updates and event logs straight from our official blog.</p>
 
   <div id="blogger-feed" class="blog-slider">
-    <p>Loading latest posts...</p>
+    <p style="padding: 15px; color: #555;">Loading latest posts...</p>
   </div>
 </section>
-
-
 
 <section>
   <h2 class="section-title">Reviews & Community</h2>
@@ -379,6 +377,7 @@ function toggleMenu() {
   document.getElementById('overlay').classList.toggle('show');
 }
 
+// Review slider rotation
 let currentSlide = 0;
 const slides = document.querySelectorAll('.review-slide');
 
@@ -389,31 +388,94 @@ function nextSlide() {
 }
 
 setInterval(nextSlide, 5000);
-</script>
 
+// Blogger Feed Fetch Script with CORS proxy fallback
+const blogUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://loabaschool.blogspot.com/feeds/posts/default?alt=json');
+
+fetch(blogUrl)
+  .then(response => response.json())
+  .then(data => {
+    const blogData = JSON.parse(data.contents);
+    const feedContainer = document.getElementById('blogger-feed');
+    feedContainer.innerHTML = ''; 
+    
+    const entries = blogData.feed && blogData.feed.entry ? blogData.feed.entry : [];
+    if(entries.length === 0) {
+      feedContainer.innerHTML = '<p style="padding: 15px;">No posts found yet.</p>';
+      return;
+    }
+
+    entries.forEach(entry => {
+      const title = entry.title ? entry.title.$t : 'Untitled Post';
+      
+      let url = '#';
+      if (entry.link) {
+        const altLink = entry.link.find(l => l.rel === 'alternate');
+        if (altLink) url = altLink.href;
+      }
+
+      let contentSnippet = '';
+      if (entry.summary) {
+        contentSnippet = entry.summary.$t;
+      } else if (entry.content) {
+        contentSnippet = entry.content.$t;
+      }
+      
+      let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').trim();
+      if (cleanText.length > 90) {
+        cleanText = cleanText.substring(0, 90) + '...';
+      }
+
+      let imgUrl = 'images/logo-s.png'; 
+      if (entry.media$thumbnail) {
+        imgUrl = entry.media$thumbnail.url;
+      } else {
+        const imgMatch = contentSnippet.match(/<img[^>]+src="([^">]+)"/);
+        if (imgMatch && imgMatch[1]) {
+          imgUrl = imgMatch[1];
+        }
+      }
+
+      const card = document.createElement('div');
+      card.className = 'news-card';
+      card.innerHTML = `
+        <img src="${imgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
+        <div class="news-card-content">
+          <span class="news-tag">Blog</span>
+          <h3>${title}</h3>
+          <p>${cleanText}</p>
+        </div>
+        <div style="padding: 0 15px 15px 15px;">
+          <a href="${url}" target="_blank" style="color: var(--green); font-weight: 600; font-size: 13.5px; text-decoration: none;">Read Full Post →</a>
+        </div>
+      `;
+      feedContainer.appendChild(card);
+    });
+  })
+  .catch(error => {
+    console.error('Error fetching blog feed:', error);
+    document.getElementById('blogger-feed').innerHTML = '<p style="padding: 15px;">Check out our updates directly on <a href="https://loabaschool.blogspot.com" target="_blank" style="color:var(--green); font-weight:600;">our official Blogger page →</a></p>';
+  });
+
+// Auto-scroll news slider script wrapped correctly in script tag
 const slider = document.getElementById("blogger-feed");
 
 setInterval(() => {
-
     if(!slider) return;
 
-    if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth-5){
-
+    if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5){
         slider.scrollTo({
-            left:0,
-            behavior:"smooth"
+            left: 0,
+            behavior: "smooth"
         });
-
-    }else{
-
+    } else {
         slider.scrollBy({
-            left:340,
-            behavior:"smooth"
+            left: 340,
+            behavior: "smooth"
         });
-
     }
-
-},4000);
+}, 4000);
+</script>
 
 </body>
 </html>
