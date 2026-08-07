@@ -21,16 +21,33 @@
     overflow-x: hidden;
   }
 
+  /* Improved Top Bar: Dark background makes gold text and button stand out clearly */
   .topbar {
-    background: var(--gold); color: var(--green-dark); text-align: center;
-    padding: 10px 15px; font-size: 14px; font-weight: 600;
-    display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;
+    background: var(--green-dark); 
+    color: #fff; 
+    text-align: center;
+    padding: 12px 20px; 
+    font-size: 14px; 
+    font-weight: 500;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 15px; 
+    flex-wrap: wrap;
+    border-bottom: 2px solid rgba(212, 162, 76, 0.3);
   }
+  .topbar span { color: var(--gold); font-weight: 600; }
   .topbar a {
-    background: var(--green); color: #fff; padding: 6px 16px; border-radius: 20px;
-    text-decoration: none; font-weight: 500; font-size: 13px; transition: 0.2s;
+    background: var(--gold); 
+    color: var(--green-dark); 
+    padding: 6px 16px; 
+    border-radius: 20px;
+    text-decoration: none; 
+    font-weight: 700; 
+    font-size: 13px; 
+    transition: 0.2s;
   }
-  .topbar a:hover { background: var(--green-dark); }
+  .topbar a:hover { background: #fff; }
 
   header {
     background: var(--green); color: #fff; padding: 12px 20px;
@@ -106,7 +123,6 @@
   }
   .quote-box strong { color: var(--green); }
 
-  /* Custom Rotating Review Slider Styles */
   .review-slider-container {
     background: #fff;
     border-radius: 12px;
@@ -184,7 +200,7 @@
 <body>
 
 <div class="topbar">
-  🎓 Admissions Open For Academic Year 2026–2027
+  🎓 <span>Admissions Open 2026–2027</span>
   <a href="admission.html">Apply Now →</a>
 </div>
 
@@ -244,14 +260,12 @@
   <p>What parents are saying about us on Facebook:</p>
   
   <div class="review-slider-container">
-    <!-- Review 1 -->
     <div class="review-slide active">
       <div class="reviewer-name">⭐ Laal <span style="font-size:13px; font-weight:normal; color:#555;">recommends Loaba Nursery and Primary School.</span></div>
       <div class="review-date">Jan 21, 2022 · 📱 Facebook Review</div>
       <p class="review-text">"Good foundation for our children, I strongly recommend this school for people residence in Mudivaithanendal."</p>
     </div>
 
-    <!-- Review 2 -->
     <div class="review-slide">
       <div class="reviewer-name">⭐ Damothara Muthu <span style="font-size:13px; font-weight:normal; color:#555;">recommends Loaba Nursery and Primary School.</span></div>
       <div class="review-date">Jun 21, 2020 · 📱 Facebook Review</div>
@@ -293,7 +307,6 @@ function toggleMenu() {
   document.getElementById('overlay').classList.toggle('show');
 }
 
-// Automatic Review Card Slider Script
 let currentSlide = 0;
 const slides = document.querySelectorAll('.review-slide');
 
@@ -303,7 +316,6 @@ function nextSlide() {
   slides[currentSlide].classList.add('active');
 }
 
-// Change review card every 5 seconds
 setInterval(nextSlide, 5000);
 </script>
 
