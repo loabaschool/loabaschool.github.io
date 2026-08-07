@@ -1,1 +1,328 @@
-jzja
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilities - Loaba Nursery & Primary School</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Explore the modern facilities at Loaba Nursery and Primary School, Mudivaithanendal, including smart classrooms, multi-functional hall, library, and music room.">
+<meta name="keywords" content="Loaba School Facilities, Mudivaithanendal School Infrastructure, Smart Classrooms, School Library">
+<meta name="author" content="Loaba Nursery and Primary School">
+
+<style>
+  html { scroll-behavior: smooth; }
+  :root {
+    --green: #0d4a3d;
+    --green-dark: #08302a;
+    --gold: #d4a24c;
+    --bg: #f8f7f4;
+    --text: #2a2a2a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { 
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    background: var(--green-dark); color: #fff; text-align: center;
+    padding: 12px 20px; font-size: 14px; font-weight: 500;
+    display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;
+    border-bottom: 2px solid rgba(212, 162, 76, 0.3);
+  }
+  .topbar span { color: var(--gold); font-weight: 600; }
+  .topbar a {
+    background: var(--gold); color: var(--green-dark); padding: 6px 16px; border-radius: 20px;
+    text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.2s;
+  }
+  .topbar a:hover { background: #fff; }
+
+  header {
+    background: var(--green); color: #fff; padding: 12px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  .brand { display: flex; align-items: center; }
+  .brand img { height: 42px; width: auto; max-width: 180px; object-fit: contain; }
+
+  .menu-toggle {
+    background: none; border: none; color: #fff; font-size: 26px; cursor: pointer;
+    padding: 4px 8px;
+  }
+
+  .side-menu {
+    position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
+    background: var(--green-dark); padding: 70px 20px 20px;
+    transition: right 0.3s ease; z-index: 1001; box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+  .side-menu.open { right: 0; }
+  .side-menu a {
+    display: block; color: #fff; text-decoration: none; padding: 14px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 16px;
+  }
+  .side-menu a:hover { color: var(--gold); }
+  
+  .dropdown-btn {
+    background: none; border: none; width: 100%; text-align: left;
+    color: #fff; font-size: 16px; padding: 14px 10px; cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.1); display: flex;
+    justify-content: space-between; align-items: center; font-family: inherit;
+  }
+  .dropdown-btn:hover { color: var(--gold); }
+  .dropdown-btn::after { content: '▾'; font-size: 14px; transition: transform 0.3s ease; }
+  .dropdown-btn.active::after { transform: rotate(180deg); }
+  .dropdown-container {
+    display: none; background: rgba(0,0,0,0.15); padding-left: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .dropdown-container a { border-bottom: none; font-size: 15px; padding: 12px 10px; color: #e2e8f0; }
+  .dropdown-container a:hover { color: var(--gold); }
+
+  .close-btn {
+    position: absolute; top: 20px; right: 20px; background: none; border: none;
+    color: #fff; font-size: 24px; cursor: pointer;
+  }
+  
+  .overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 1000;
+  }
+  .overlay.show { display: block; }
+
+  /* Page Hero / Banner Section */
+  .page-hero {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    background: var(--green-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(13, 74, 61, 0.9), rgba(8, 48, 42, 0.95)), url('images/facilities-banner.jpg') center/cover;
+    z-index: 1;
+  }
+  .page-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+  }
+  .page-hero h1 { font-size: clamp(30px, 5vw, 42px); color: var(--gold); margin-bottom: 8px; }
+  .page-hero p { font-size: 16px; color: #fff; opacity: 0.95; }
+
+  /* Facilities Photo Slideshow Gallery */
+  .facility-slideshow {
+    position: relative;
+    max-width: 960px;
+    margin: 40px auto 20px;
+    padding: 0 20px;
+  }
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background: #000;
+  }
+  .facility-slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+  }
+  .facility-slide.active { opacity: 1; }
+  .slide-caption {
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: #fff;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .slideshow-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+  }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #ccc; cursor: pointer; transition: background 0.3s;
+  }
+  .dot.active { background: var(--gold); width: 24px; border-radius: 6px; }
+
+  section { max-width: 960px; margin: 0 auto; padding: 35px 20px; }
+  .section-title {
+    color: var(--green); font-size: 24px; margin-bottom: 18px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 3px; background: var(--gold); min-width: 40px;
+  }
+  section > p { margin-bottom: 16px; color: #444; font-size: 15.5px; }
+
+  footer { background: var(--green-dark); color: #e8e8e8; padding: 40px 20px 25px; text-align: center; }
+  footer img { height: 60px; margin-bottom: 16px; opacity: 0.95; }
+  .contact-info p { margin-bottom: 6px; font-size: 14.5px; }
+  .contact-info a { color: var(--gold); text-decoration: none; }
+  .socials { margin: 22px 0 10px; }
+  .socials a {
+    display: inline-flex; align-items: center; justify-content: center;
+    margin: 0 6px; width: 38px; height: 38px; border-radius: 50%;
+    background: var(--gold); color: var(--green-dark); font-weight: 700;
+    text-decoration: none; font-size: 14px; transition: 0.2s;
+  }
+  .socials a:hover { background: #fff; }
+  .copyright { font-size: 13px; opacity: 0.7; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🎓 <span>Admissions Open 2026–2027</span>
+  <a href="admission.html">Apply Now →</a>
+</div>
+
+<header>
+  <div class="brand">
+    <img loading="lazy" src="images/logo-s.png" alt="Loaba Nursery and Primary School">
+  </div>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
+</header>
+
+<div class="side-menu" id="sideMenu">
+  <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">✕</button>
+  <a href="index.html">Home</a>
+  
+  <button class="dropdown-btn" onclick="toggleDropdown(this)">About Us</button>
+  <div class="dropdown-container">
+    <a href="management.html">Management</a>
+    <a href="committees.html">Committees</a>
+    <a href="code-of-conduct.html">Code of Conduct</a>
+  </div>
+
+  <a href="admission.html">Admissions</a>
+  <a href="facilities.html" style="color: var(--gold); font-weight: 600;">Facilities</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <h1>Our Facilities</h1>
+    <p>Creating an inspiring, well-equipped environment for every child to learn and grow.</p>
+  </div>
+</div>
+
+<!-- Facilities Photo Slideshow Gallery -->
+<div class="facility-slideshow">
+  <div class="slideshow-container">
+    <div class="facility-slide active" style="background-image: url('images/facility1.jpg');">
+      <div class="slide-caption">Students engaged in outdoor activities & sports</div>
+    </div>
+    <div class="facility-slide" style="background-image: url('images/facility2.jpg');">
+      <div class="slide-caption">Well-equipped Classrooms with Learning Essentials</div>
+    </div>
+    <div class="facility-slide" style="background-image: url('images/facility3.jpg');">
+      <div class="slide-caption">School Campus & Play Equipment</div>
+    </div>
+  </div>
+  <div class="slideshow-dots">
+    <span class="dot active" onclick="currentSlide(0)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+  </div>
+</div>
+
+<section>
+  <h2 class="section-title">Designed for Young Learners</h2>
+  <p>Loaba Nursery and Primary School is always adapting to the needs of our children and we strive to give them the best that we can. Each classroom is fully equipped with the necessities for learning, a computer, a class library, and chairs and tables tailored to fit the need and age of the children in that room.</p>
+  
+  <p>Our school hall is multi-functional and is used for indoor P.E., featuring new climbing bars, ropes, and foldable tables for lunchtimes.</p>
+
+  <p>Our Library is in the process of regeneration at present but remains fully accessible to the children whilst the revamp takes place.</p>
+
+  <p>We have also recently installed a new kitchen and music room for the children to explore, cook, and get creative!</p>
+</section>
+
+<footer>
+  <img loading="lazy" src="images/fav.png" alt="Loaba School Logo">
+  <div class="contact-info">
+    <p><strong>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102</strong></p>
+    <p>📞 Mobile: 9442522311</p>
+    <p>☎️ Phone: 0461-2269399 / 0461-2269252</p>
+    <p>📧 Email: <a href="mailto:loabaschoolmudivai@gmail.com">loabaschoolmudivai@gmail.com</a></p>
+  </div>
+  <div class="socials">
+    <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://youtube.com/@loabaschool" title="YouTube" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+  <p class="copyright">© 1996–2026 Loaba Nursery and Primary School. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('sideMenu').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+function toggleDropdown(btn) {
+  btn.classList.toggle('active');
+  const container = btn.nextElementSibling;
+  if (container.style.display === 'block') {
+    container.style.display = 'none';
+  } else {
+    container.style.display = 'block';
+  }
+}
+
+// Facilities Photo Slideshow Script
+let slideIndex = 0;
+const slides = document.querySelectorAll('.facility-slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(n) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  slideIndex = (n + slides.length) % slides.length;
+  slides[slideIndex].classList.add('active');
+  dots[slideIndex].classList.add('active');
+}
+
+function nextSlide() {
+  showSlide(slideIndex + 1);
+}
+
+function currentSlide(n) {
+  showSlide(n);
+}
+
+// Auto change slide every 4 seconds
+setInterval(nextSlide, 4000);
+</script>
+
+</body>
+</html>
