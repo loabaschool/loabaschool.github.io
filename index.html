@@ -60,10 +60,12 @@
     padding: 4px 8px;
   }
 
+  /* Side Menu Styles with Dropdown Support */
   .side-menu {
     position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
     background: var(--green-dark); padding: 70px 20px 20px;
     transition: right 0.3s ease; z-index: 1001; box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
   }
   .side-menu.open { right: 0; }
   .side-menu a {
@@ -72,6 +74,29 @@
   }
   .side-menu a:hover { color: var(--gold); }
   
+  /* Dropdown Menu Styles inside Side Menu */
+  .dropdown-btn {
+    background: none; border: none; width: 100%; text-align: left;
+    color: #fff; font-size: 16px; padding: 14px 10px; cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.1); display: flex;
+    justify-content: space-between; align-items: center; font-family: inherit;
+  }
+  .dropdown-btn:hover { color: var(--gold); }
+  .dropdown-btn::after {
+    content: '▾'; font-size: 14px; transition: transform 0.3s ease;
+  }
+  .dropdown-btn.active::after {
+    transform: rotate(180deg);
+  }
+  .dropdown-container {
+    display: none; background: rgba(0,0,0,0.15); padding-left: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .dropdown-container a {
+    border-bottom: none; font-size: 15px; padding: 12px 10px; color: #e2e8f0;
+  }
+  .dropdown-container a:hover { color: var(--gold); }
+
   .close-btn {
     position: absolute; top: 20px; right: 20px; background: none; border: none;
     color: #fff; font-size: 24px; cursor: pointer;
@@ -264,7 +289,15 @@
 <div class="side-menu" id="sideMenu">
   <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">✕</button>
   <a href="index.html">Home</a>
-  <a href="about.html">About Us</a>
+  
+  <!-- About Us Dropdown Menu -->
+  <button class="dropdown-btn" onclick="toggleDropdown(this)">About Us</button>
+  <div class="dropdown-container">
+    <a href="management.html">Management</a>
+    <a href="committees.html">Committees</a>
+    <a href="code-of-conduct.html">Code of Conduct</a>
+  </div>
+
   <a href="admission.html">Admissions</a>
   <a href="facilities.html">Facilities</a>
   <a href="gallery.html">Gallery</a>
@@ -339,7 +372,7 @@
 </section>
 
 <footer>
-  <img loading="lazy" src="images/logo-u.png" alt="Loaba School Logo">
+  <img loading="lazy" src="images/fav.png" alt="Loaba School Logo">
   <div class="contact-info">
     <p><strong>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102</strong></p>
     <p>📞 Mobile: 9442522311</p>
@@ -349,7 +382,7 @@
   <div class="socials">
     <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
-    <a href="https://youtube.com/@loabaschool" title="YouTube" target="_blank" rel="noopener noreferrer">Y</a>
+    <a href="https://youtube.com/@loabaschool" title="YouTube" target="_blank" rel="noopener noreferrer">YouTube</a>
     <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
   <p class="copyright">© 1996–2026 Loaba Nursery and Primary School. All rights reserved.</p>
@@ -359,6 +392,17 @@
 function toggleMenu() {
   document.getElementById('sideMenu').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('show');
+}
+
+// Toggle Dropdown Function for Side Menu
+function toggleDropdown(btn) {
+  btn.classList.toggle('active');
+  const container = btn.nextElementSibling;
+  if (container.style.display === 'block') {
+    container.style.display = 'none';
+  } else {
+    container.style.display = 'block';
+  }
 }
 
 let currentSlide = 0;
