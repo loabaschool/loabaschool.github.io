@@ -506,7 +506,7 @@ function currentSlide(n) {
 
 setInterval(nextSlide, 4000);
 
-// Blogger Feed Script
+// Blogger Feed Script with High-Resolution Image Fix
 const blogUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://loabaschool.blogspot.com/feeds/posts/default?alt=json');
 fetch(blogUrl)
   .then(response => response.json())
@@ -521,11 +521,19 @@ fetch(blogUrl)
       let url = entry.link.find(l => l.rel === 'alternate')?.href || '#';
       let contentSnippet = entry.summary?.$t || entry.content?.$t || '';
       let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').substring(0, 90) + '...';
-      let imgUrl = entry.media$thumbnail?.url || contentSnippet.match(/<img[^>]+src="([^">]+)"/)?.[1] || 'images/logo-s.png';
+      
+      // Get image and convert Blogger's low-res thumbnail link to high-res
+      let rawImgUrl = entry.media$thumbnail?.url || contentSnippet.match(/<img[^>]+src="([^">]+)"/)?.[1] || 'images/logo-s.png';
+      let highResImgUrl = rawImgUrl;
+      if (rawImgUrl.includes('blogger.googleusercontent.com') || rawImgUrl.includes('bp.blogspot.com')) {
+        // Remove sizing parameters like /s72-c/ or /w72-h72/ to fetch the full image
+        highResImgUrl = rawImgUrl.replace(/\/s[0-9]+(\-c)?\//, '/s1600/').replace(/\/w[0-9]+-h[0-9]+(\-c)?\//, '/s1600/');
+      }
+
       const card = document.createElement('div');
       card.className = 'news-card';
       card.innerHTML = `
-        <img loading="lazy" src="${imgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
+        <img loading="lazy" src="${highResImgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
         <div class="news-card-content">
           <span class="news-tag">Blog</span>
           <h3>${title}</h3>
@@ -538,6 +546,7 @@ fetch(blogUrl)
       feedContainer.appendChild(card);
     });
   });
+
 
 const slider = document.getElementById("blogger-feed");
 if (slider) {
