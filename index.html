@@ -543,4 +543,14 @@ const slider = document.getElementById("blogger-feed");
 if (slider) {
     setInterval(() => {
         if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5){
-            slider.scrollTo({ left: 0, be
+            slider.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+            slider.scrollBy({ left: 340, behavior: "smooth" });
+        }
+    }, 4000);
+}
+</script>
+
+</body>
+</html>
+
