@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Management - Loaba Nursery & Primary School</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Meet the management and trust members behind Loaba Nursery and Primary School, Mudivaithanendal, Thoothukudi.">
+<meta name="keywords" content="Loaba School Management, Shri Sudalaimuthupillai Valliammal Education Trust, Mudivaithanendal">
+<meta name="author" content="Loaba Nursery and Primary School">
+
+<style>
+  html { scroll-behavior: smooth; }
+  :root {
+    --green: #0d4a3d;
+    --green-dark: #08302a;
+    --gold: #d4a24c;
+    --bg: #f8f7f4;
+    --text: #2a2a2a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { 
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    background: var(--green-dark); color: #fff; text-align: center;
+    padding: 12px 20px; font-size: 14px; font-weight: 500;
+    display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;
+    border-bottom: 2px solid rgba(212, 162, 76, 0.3);
+  }
+  .topbar span { color: var(--gold); font-weight: 600; }
+  .topbar a {
+    background: var(--gold); color: var(--green-dark); padding: 6px 16px; border-radius: 20px;
+    text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.2s;
+  }
+  .topbar a:hover { background: #fff; }
+
+  header {
+    background: var(--green); color: #fff; padding: 12px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  .brand { display: flex; align-items: center; }
+  .brand img { height: 42px; width: auto; max-width: 180px; object-fit: contain; }
+
+  .menu-toggle {
+    background: none; border: none; color: #fff; font-size: 26px; cursor: pointer;
+    padding: 4px 8px;
+  }
+
+  .side-menu {
+    position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
+    background: var(--green-dark); padding: 70px 20px 20px;
+    transition: right 0.3s ease; z-index: 1001; box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+  .side-menu.open { right: 0; }
+  .side-menu a {
+    display: block; color: #fff; text-decoration: none; padding: 14px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 16px;
+  }
+  .side-menu a:hover { color: var(--gold); }
+  
+  .dropdown-btn {
+    background: none; border: none; width: 100%; text-align: left;
+    color: #fff; font-size: 16px; padding: 14px 10px; cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.1); display: flex;
+    justify-content: space-between; align-items: center; font-family: inherit;
+  }
+  .dropdown-btn:hover { color: var(--gold); }
+  .dropdown-btn::after { content: '▾'; font-size: 14px; transition: transform 0.3s ease; }
+  .dropdown-btn.active::after { transform: rotate(180deg); }
+  .dropdown-container {
+    display: block; background: rgba(0,0,0,0.15); padding-left: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .dropdown-container a { border-bottom: none; font-size: 15px; padding: 12px 10px; color: #e2e8f0; }
+  .dropdown-container a:hover { color: var(--gold); }
+
+  .close-btn {
+    position: absolute; top: 20px; right: 20px; background: none; border: none;
+    color: #fff; font-size: 24px; cursor: pointer;
+  }
+  
+  .overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 1000;
+  }
+  .overlay.show { display: block; }
+
+  .page-hero {
+    text-align: center; padding: 45px 20px;
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: #fff;
+  }
+  .page-hero h1 { font-size: clamp(26px, 5vw, 36px); color: var(--gold); margin-bottom: 8px; }
+  .page-hero p { font-size: 15px; opacity: 0.95; max-width: 600px; margin: 0 auto; }
+
+  section { max-width: 960px; margin: 0 auto; padding: 45px 20px; }
+  .section-title {
+    color: var(--green); font-size: 24px; margin-bottom: 18px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 3px; background: var(--gold); min-width: 40px;
+  }
+  section > p { margin-bottom: 14px; color: #444; }
+
+  /* Management Grid Styles */
+  .management-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+  }
+  .management-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--gold);
+    text-align: center;
+    padding: 30px 20px;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .management-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .member-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 18px;
+    border: 3px solid var(--gold);
+  }
+  .management-card h3 {
+    color: var(--green);
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+  .designation {
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .management-card p {
+    font-size: 14px;
+    color: #555;
+  }
+
+  .quote-box {
+    background: #fff; border-left: 5px solid var(--gold); border-radius: 8px;
+    padding: 20px 24px; margin: 25px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .quote-box strong { color: var(--green); }
+
+  footer { background: var(--green-dark); color: #e8e8e8; padding: 40px 20px 25px; text-align: center; }
+  footer img { height: 60px; margin-bottom: 16px; opacity: 0.95; }
+  .contact-info p { margin-bottom: 6px; font-size: 14.5px; }
+  .contact-info a { color: var(--gold); text-decoration: none; }
+  .socials { margin: 22px 0 10px; }
+  .socials a {
+    display: inline-flex; align-items: center; justify-content: center;
+    margin: 0 6px; width: 38px; height: 38px; border-radius: 50%;
+    background: var(--gold); color: var(--green-dark); font-weight: 700;
+    text-decoration: none; font-size: 14px; transition: 0.2s;
+  }
+  .socials a:hover { background: #fff; }
+  .copyright { font-size: 13px; opacity: 0.7; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🎓 <span>Admissions Open 2026–2027</span>
+  <a href="admission.html">Apply Now →</a>
+</div>
+
+<header>
+  <div class="brand">
+    <img loading="lazy" src="images/logo-s.png" alt="Loaba Nursery and Primary School">
+  </div>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
+</header>
+
+<div class="side-menu" id="sideMenu">
+  <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">✕</button>
+  <a href="index.html">Home</a>
+  
+  <button class="dropdown-btn active" onclick="toggleDropdown(this)">About Us</button>
+  <div class="dropdown-container" style="display: block;">
+    <a href="management.html" style="color: var(--gold); font-weight: 600;">Management</a>
+    <a href="committees.html">Committees</a>
+    <a href="code-of-conduct.html">Code of Conduct</a>
+  </div>
+
+  <a href="admission.html">Admissions</a>
+  <a href="facilities.html">Facilities</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<div class="page-hero">
+  <h1>School Management</h1>
+  <p>Guided by visionary leadership and dedicated to 30 years of educational excellence under the Shri Sudalaimuthupillai Valliammal Education Trust.</p>
+</div>
+
+<section>
+  <h2 class="section-title">Leadership & Trust Board</h2>
+  <p>Loaba Nursery and Primary School is managed by a distinguished team of leaders and educators from different walks of life, united by a shared passion for shaping young minds and providing high-standard foundational education in Mudivaithanendal.</p>
+
+  <div class="management-grid">
+    
+    <!-- Management Member 1 -->
+    <div class="management-card">
+      <img loading="lazy" src="images/management1.jpg" alt="Trustee Portrait" class="member-img" onerror="this.src='images/logo-s.png'">
+      <h3>Thiru. [Name Here]</h3>
+      <div class="designation">Managing Trustee / Founder</div>
+      <p>Providing lifelong visionary guidance and steering the institution toward community development and spiritual values.</p>
+    </div>
+
+    <!-- Management Member 2 -->
+    <div class="management-card">
+      <img loading="lazy" src="images/management2.jpg" alt="Correspondent Portrait" class="member-img" onerror="this.src='images/logo-s.png'">
+      <h3>[Name Here]</h3>
+      <div class="designation">Correspondent</div>
+      <p>Overseeing daily institutional operations, infrastructural growth, and administrative excellence.</p>
+    </div>
+
+    <!-- Management Member 3 -->
+    <div class="management-card">
+      <img loading="lazy" src="images/management3.jpg" alt="Principal Portrait" class="member-img" onerror="this.src='images/logo-s.png'">
+      <h3>[Name Here]</h3>
+      <div class="designation">Principal</div>
+      <p>Driving academic innovation, student-centric discipline, and holistic character development.</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Our Guiding Philosophy</h2>
+  <div class="quote-box">
+    <strong>"Labor Omnia Vincit"</strong> — Hard work embodied in diligence and perseverance leads one to achieve greater things in life. Our management team is committed to upholding this legacy across generations.
+  </div>
+  <p>The trust ensures that every child passing through our gates receives equal opportunities, modern foundational training, and values that last a lifetime.</p>
+</section>
+
+<footer>
+  <img loading="lazy" src="images/fav.png" alt="Loaba School Logo">
+  <div class="contact-info">
+    <p><strong>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102</strong></p>
+    <p>📞 Mobile: 9442522311</p>
+    <p>☎️ Phone: 0461-2269399 / 0461-2269252</p>
+    <p>📧 Email: <a href="mailto:loabaschoolmudivai@gmail.com">loabaschoolmudivai@gmail.com</a></p>
+  </div>
+  <div class="socials">
+    <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://youtube.com/@loabaschool" title="YouTube" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </div>
+  <p class="copyright">© 1996–2026 Loaba Nursery and Primary School. All rights reserved.</p>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('sideMenu').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+function toggleDropdown(btn) {
+  btn.classList.toggle('active');
+  const container = btn.nextElementSibling;
+  if (container.style.display === 'block') {
+    container.style.display = 'none';
+  } else {
+    container.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
