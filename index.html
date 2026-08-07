@@ -182,6 +182,66 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+
+.blog-slider{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding:10px 5px;
+}
+
+.blog-slider::-webkit-scrollbar{
+  height:8px;
+}
+
+.blog-slider::-webkit-scrollbar-thumb{
+  background:var(--gold);
+  border-radius:20px;
+}
+
+.news-card{
+  min-width:320px;
+  max-width:320px;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,.12);
+  flex-shrink:0;
+}
+
+.news-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.news-card-content{
+  padding:15px;
+}
+
+.news-card h3{
+  color:var(--green);
+  font-size:18px;
+  margin:10px 0;
+}
+
+.news-card p{
+  color:#555;
+  font-size:14px;
+}
+
+.news-tag{
+  display:inline-block;
+  background:var(--green);
+  color:#fff;
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+
+
   footer { background: var(--green-dark); color: #e8e8e8; padding: 40px 20px 25px; text-align: center; }
   footer img { height: 60px; margin-bottom: 16px; opacity: 0.95; }
   .contact-info p { margin-bottom: 6px; font-size: 14.5px; }
@@ -257,77 +317,13 @@
 
 
 
-<script>
-  // Using a public CORS proxy to ensure browsers/shields don't block the feed
-  const blogUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://loabaschool.blogspot.com/feeds/posts/default?alt=json');
+<section>
+  <h2 class="section-title">Latest News & Blogs</h2>
 
-  fetch(blogUrl)
-    .then(response => response.json())
-    .then(data => {
-      const blogData = JSON.parse(data.contents);
-      const feedContainer = document.getElementById('blogger-feed');
-      feedContainer.innerHTML = ''; 
-      
-      const entries = blogData.feed && blogData.feed.entry ? blogData.feed.entry : [];
-      if(entries.length === 0) {
-        feedContainer.innerHTML = '<p style="padding: 20px;">No posts found yet.</p>';
-        return;
-      }
-
-      entries.forEach(entry => {
-        const title = entry.title ? entry.title.$t : 'Untitled Post';
-        
-        let url = '#';
-        if (entry.link) {
-          const altLink = entry.link.find(l => l.rel === 'alternate');
-          if (altLink) url = altLink.href;
-        }
-
-        let contentSnippet = '';
-        if (entry.summary) {
-          contentSnippet = entry.summary.$t;
-        } else if (entry.content) {
-          contentSnippet = entry.content.$t;
-        }
-        
-        let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').trim();
-        if (cleanText.length > 90) {
-          cleanText = cleanText.substring(0, 90) + '...';
-        }
-
-        let imgUrl = 'images/logo-s.png'; 
-        if (entry.media$thumbnail) {
-          imgUrl = entry.media$thumbnail.url;
-        } else {
-          const imgMatch = contentSnippet.match(/<img[^>]+src="([^">]+)"/);
-          if (imgMatch && imgMatch[1]) {
-            imgUrl = imgMatch[1];
-          }
-        }
-
-        const card = document.createElement('div');
-        card.className = 'news-card';
-        card.innerHTML = `
-          <img src="${imgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
-          <div class="news-card-content">
-            <div>
-              <span class="news-tag">Blog</span>
-              <h3>${title}</h3>
-              <p>${cleanText}</p>
-            </div>
-            <a href="${url}" target="_blank" style="color: var(--green); font-weight: 600; font-size: 13.5px; text-decoration: none; margin-top: 10px; display: inline-block;">Read Full Post →</a>
-          </div>
-        `;
-        feedContainer.appendChild(card);
-      });
-    })
-    .catch(error => {
-      console.error('Error fetching blog feed:', error);
-      document.getElementById('blogger-feed').innerHTML = '<p style="padding: 20px;">Check out our updates directly on <a href="https://loabaschool.blogspot.com" target="_blank" style="color:var(--green); font-weight:600;">our official Blogger page →</a></p>';
-    });
-</script>
-
-
+  <div id="blogger-feed" class="blog-slider">
+    <p>Loading latest posts...</p>
+  </div>
+</section>
 
 
 
@@ -394,6 +390,30 @@ function nextSlide() {
 
 setInterval(nextSlide, 5000);
 </script>
+
+const slider = document.getElementById("blogger-feed");
+
+setInterval(() => {
+
+    if(!slider) return;
+
+    if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth-5){
+
+        slider.scrollTo({
+            left:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        slider.scrollBy({
+            left:340,
+            behavior:"smooth"
+        });
+
+    }
+
+},4000);
 
 </body>
 </html>
