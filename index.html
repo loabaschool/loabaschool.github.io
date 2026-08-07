@@ -257,30 +257,18 @@
 
 
 
-<section>
-  <h2 class="section-title">Latest School News & Blog</h2>
-  <p>Read our latest updates and event logs straight from our official blog.</p>
-
-  <!-- Blogger Feed Container -->
-  <div id="blogger-feed" class="news-scroll-container">
-    <p style="padding: 20px; color: #555;">Loading latest posts from our blog...</p>
-  </div>
-</section>
-
-<!-- Corrected Script to automatically fetch posts from your Blogger site -->
 <script>
-  fetch('https://loabaschool.blogspot.com/feeds/posts/default?alt=json')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
+  // Using a public CORS proxy to ensure browsers/shields don't block the feed
+  const blogUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://loabaschool.blogspot.com/feeds/posts/default?alt=json');
+
+  fetch(blogUrl)
+    .then(response => response.json())
     .then(data => {
+      const blogData = JSON.parse(data.contents);
       const feedContainer = document.getElementById('blogger-feed');
-      feedContainer.innerHTML = ''; // Clear loading text
+      feedContainer.innerHTML = ''; 
       
-      const entries = data.feed && data.feed.entry ? data.feed.entry : [];
+      const entries = blogData.feed && blogData.feed.entry ? blogData.feed.entry : [];
       if(entries.length === 0) {
         feedContainer.innerHTML = '<p style="padding: 20px;">No posts found yet.</p>';
         return;
@@ -289,14 +277,12 @@
       entries.forEach(entry => {
         const title = entry.title ? entry.title.$t : 'Untitled Post';
         
-        // Find the alternate URL link
         let url = '#';
         if (entry.link) {
           const altLink = entry.link.find(l => l.rel === 'alternate');
           if (altLink) url = altLink.href;
         }
 
-        // Get content snippet safely
         let contentSnippet = '';
         if (entry.summary) {
           contentSnippet = entry.summary.$t;
@@ -309,12 +295,10 @@
           cleanText = cleanText.substring(0, 90) + '...';
         }
 
-        // Extract image safely from content or fallback to school logo
         let imgUrl = 'images/logo-s.png'; 
         if (entry.media$thumbnail) {
           imgUrl = entry.media$thumbnail.url;
         } else {
-          // Look for an image inside the post content HTML if no thumbnail exists
           const imgMatch = contentSnippet.match(/<img[^>]+src="([^">]+)"/);
           if (imgMatch && imgMatch[1]) {
             imgUrl = imgMatch[1];
