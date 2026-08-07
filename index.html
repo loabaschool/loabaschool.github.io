@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loaba Nursery & Primary School, Mudivaithanendal</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Loaba Nursery and Primary School, Mudivaithanendal, Thoothukudi. Admissions Open 2026-2027. 30 Years of Educational Service.">
+<meta name="keywords" content="Loaba School, Mudivaithanendal School, Nursery School, Primary School, English Medium School, Thoothukudi">
+<meta name="author" content="Loaba Nursery and Primary School">
+<meta property="og:title" content="Loaba Nursery and Primary School">
+<meta property="og:description" content="30 Years of Educational Service Since 1996">
+<meta property="og:image" content="images/logo-s.png">
+<meta property="og:type" content="website">
+
 <style>
+  html { scroll-behavior: smooth; }
   :root {
     --green: #0d4a3d;
     --green-dark: #08302a;
@@ -21,31 +32,16 @@
     overflow-x: hidden;
   }
 
-  /* Improved Top Bar: Dark background makes gold text and button stand out clearly */
   .topbar {
-    background: var(--green-dark); 
-    color: #fff; 
-    text-align: center;
-    padding: 12px 20px; 
-    font-size: 14px; 
-    font-weight: 500;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 15px; 
-    flex-wrap: wrap;
+    background: var(--green-dark); color: #fff; text-align: center;
+    padding: 12px 20px; font-size: 14px; font-weight: 500;
+    display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;
     border-bottom: 2px solid rgba(212, 162, 76, 0.3);
   }
   .topbar span { color: var(--gold); font-weight: 600; }
   .topbar a {
-    background: var(--gold); 
-    color: var(--green-dark); 
-    padding: 6px 16px; 
-    border-radius: 20px;
-    text-decoration: none; 
-    font-weight: 700; 
-    font-size: 13px; 
-    transition: 0.2s;
+    background: var(--gold); color: var(--green-dark); padding: 6px 16px; border-radius: 20px;
+    text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.2s;
   }
   .topbar a:hover { background: #fff; }
 
@@ -189,11 +185,9 @@
     scroll-behavior:smooth;
     padding:10px 5px;
   }
-
   .blog-slider::-webkit-scrollbar{
     height:8px;
   }
-
   .blog-slider::-webkit-scrollbar-thumb{
     background:var(--gold);
     border-radius:20px;
@@ -212,28 +206,23 @@
     justify-content: space-between;
     border-top: 4px solid var(--gold);
   }
-
   .news-card img{
     width:100%;
     height:180px;
     object-fit:cover;
   }
-
   .news-card-content{
     padding:15px;
   }
-
   .news-card h3{
     color:var(--green);
     font-size:18px;
     margin:10px 0;
   }
-
   .news-card p{
     color:#555;
     font-size:14px;
   }
-
   .news-tag{
     display:inline-block;
     background:var(--green);
@@ -267,7 +256,7 @@
 
 <header>
   <div class="brand">
-    <img src="images/logo-s.png" alt="Loaba Nursery and Primary School">
+    <img loading="lazy" src="images/logo-s.png" alt="Loaba Nursery and Primary School">
   </div>
   <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
 </header>
@@ -284,7 +273,7 @@
 <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
 <div class="hero">
-  <img src="images/badge-30years.png" alt="30 Years of Educational Service">
+  <img loading="lazy" src="images/badge-30years.png" alt="30 Years of Educational Service">
   <h1>LOABA Nursery and Primary School</h1>
   <p>Mudivaithanendal, Tamil Nadu 628102 — Celebrating 30 Years of Educational Service Since 1996</p>
 </div>
@@ -319,7 +308,6 @@
 <section>
   <h2 class="section-title">Latest News & Blogs</h2>
   <p>Read our latest updates and event logs straight from our official blog.</p>
-
   <div id="blogger-feed" class="blog-slider">
     <p style="padding: 15px; color: #555;">Loading latest posts...</p>
   </div>
@@ -328,22 +316,19 @@
 <section>
   <h2 class="section-title">Reviews & Community</h2>
   <p>What parents are saying about us on Facebook:</p>
-  
   <div class="review-slider-container">
     <div class="review-slide active">
       <div class="reviewer-name">⭐ Laal <span style="font-size:13px; font-weight:normal; color:#555;">recommends Loaba Nursery and Primary School.</span></div>
       <div class="review-date">Jan 21, 2022 · 📱 Facebook Review</div>
       <p class="review-text">"Good foundation for our children, I strongly recommend this school for people residence in Mudivaithanendal."</p>
     </div>
-
     <div class="review-slide">
       <div class="reviewer-name">⭐ Damothara Muthu <span style="font-size:13px; font-weight:normal; color:#555;">recommends Loaba Nursery and Primary School.</span></div>
       <div class="review-date">Jun 21, 2020 · 📱 Facebook Review</div>
-      <p class="review-text">"A VERY GOOD SCHOOL FOR LEARNING. FILLED WITH HI-FI TECHNOLOGY AND IT IS THE BEST SCHOOL FOR UNDERPRIVILEGED. A GOOD SCHOOL WHICH IS EQUIVALENT AND MORE..."</p>
+      <p class="review-text">"A VERY GOOD SCHOOL FOR LEARNING. FILLED WITH HI-FI TECHNOLOGY AND IT IS THE BEST SCHOOL FOR UNDERPRIVILEGED..."</p>
     </div>
-
     <div class="review-footer-link">
-      <a href="https://www.facebook.com/loabaschoolmudivai" target="_blank">For more reviews visit our page →</a>
+      <a href="https://www.facebook.com/loabaschoolmudivai" target="_blank" rel="noopener noreferrer">For more reviews visit our page →</a>
     </div>
   </div>
 </section>
@@ -354,7 +339,7 @@
 </section>
 
 <footer>
-  <img src="images/fav.png" alt="Loaba School Logo">
+  <img loading="lazy" src="images/fav.png" alt="Loaba School Logo">
   <div class="contact-info">
     <p><strong>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102</strong></p>
     <p>📞 Mobile: 9442522311</p>
@@ -362,13 +347,12 @@
     <p>📧 Email: <a href="mailto:loabaschoolmudivai@gmail.com">loabaschoolmudivai@gmail.com</a></p>
   </div>
   <div class="socials">
-    <a href="https://wa.me/919442522311" title="WhatsApp">WhatsApp</a>
-    <a href="https://facebook.com/loabaschool" title="Facebook">Facebook</a>
-    <a href="https://youtube.com/@loabaschool" title="YouTube">YouTube</a>
-    <a href="https://instagram.com/loabaschool" title="Instagram">Instagram</a>
-    <a href="https://twitter.com/loabaschool" title="X / Twitter">X</a>
+    <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a href="https://youtube.com/@loabaschool" title="YouTube" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
   </div>
-  <p class="copyright">© 2026 Loaba Nursery and Primary School. All rights reserved.</p>
+  <p class="copyright">© 1996–2026 Loaba Nursery and Primary School. All rights reserved.</p>
 </footer>
 
 <script>
@@ -377,104 +361,57 @@ function toggleMenu() {
   document.getElementById('overlay').classList.toggle('show');
 }
 
-// Review slider rotation
 let currentSlide = 0;
 const slides = document.querySelectorAll('.review-slide');
-
 function nextSlide() {
   slides[currentSlide].classList.remove('active');
   currentSlide = (currentSlide + 1) % slides.length;
   slides[currentSlide].classList.add('active');
 }
-
 setInterval(nextSlide, 5000);
 
-// Blogger Feed Fetch Script with CORS proxy fallback
 const blogUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://loabaschool.blogspot.com/feeds/posts/default?alt=json');
-
 fetch(blogUrl)
   .then(response => response.json())
   .then(data => {
     const blogData = JSON.parse(data.contents);
     const feedContainer = document.getElementById('blogger-feed');
     feedContainer.innerHTML = ''; 
-    
     const entries = blogData.feed && blogData.feed.entry ? blogData.feed.entry : [];
-    if(entries.length === 0) {
-      feedContainer.innerHTML = '<p style="padding: 15px;">No posts found yet.</p>';
-      return;
-    }
-
+    if(entries.length === 0) { feedContainer.innerHTML = '<p style="padding: 15px;">No posts found yet.</p>'; return; }
     entries.forEach(entry => {
       const title = entry.title ? entry.title.$t : 'Untitled Post';
-      
-      let url = '#';
-      if (entry.link) {
-        const altLink = entry.link.find(l => l.rel === 'alternate');
-        if (altLink) url = altLink.href;
-      }
-
-      let contentSnippet = '';
-      if (entry.summary) {
-        contentSnippet = entry.summary.$t;
-      } else if (entry.content) {
-        contentSnippet = entry.content.$t;
-      }
-      
-      let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').trim();
-      if (cleanText.length > 90) {
-        cleanText = cleanText.substring(0, 90) + '...';
-      }
-
-      let imgUrl = 'images/logo-s.png'; 
-      if (entry.media$thumbnail) {
-        imgUrl = entry.media$thumbnail.url;
-      } else {
-        const imgMatch = contentSnippet.match(/<img[^>]+src="([^">]+)"/);
-        if (imgMatch && imgMatch[1]) {
-          imgUrl = imgMatch[1];
-        }
-      }
-
+      let url = entry.link.find(l => l.rel === 'alternate')?.href || '#';
+      let contentSnippet = entry.summary?.$t || entry.content?.$t || '';
+      let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').substring(0, 90) + '...';
+      let imgUrl = entry.media$thumbnail?.url || contentSnippet.match(/<img[^>]+src="([^">]+)"/)?.[1] || 'images/logo-s.png';
       const card = document.createElement('div');
       card.className = 'news-card';
       card.innerHTML = `
-        <img src="${imgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
+        <img loading="lazy" src="${imgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
         <div class="news-card-content">
           <span class="news-tag">Blog</span>
           <h3>${title}</h3>
           <p>${cleanText}</p>
         </div>
         <div style="padding: 0 15px 15px 15px;">
-          <a href="${url}" target="_blank" style="color: var(--green); font-weight: 600; font-size: 13.5px; text-decoration: none;">Read Full Post →</a>
+          <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--green); font-weight: 600; font-size: 13.5px; text-decoration: none;">Read Full Post →</a>
         </div>
       `;
       feedContainer.appendChild(card);
     });
-  })
-  .catch(error => {
-    console.error('Error fetching blog feed:', error);
-    document.getElementById('blogger-feed').innerHTML = '<p style="padding: 15px;">Check out our updates directly on <a href="https://loabaschool.blogspot.com" target="_blank" style="color:var(--green); font-weight:600;">our official Blogger page →</a></p>';
   });
 
-// Auto-scroll news slider script wrapped correctly in script tag
 const slider = document.getElementById("blogger-feed");
-
-setInterval(() => {
-    if(!slider) return;
-
-    if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5){
-        slider.scrollTo({
-            left: 0,
-            behavior: "smooth"
-        });
-    } else {
-        slider.scrollBy({
-            left: 340,
-            behavior: "smooth"
-        });
-    }
-}, 4000);
+if (slider) {
+    setInterval(() => {
+        if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5){
+            slider.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+            slider.scrollBy({ left: 340, behavior: "smooth" });
+        }
+    }, 4000);
+}
 </script>
 
 </body>
