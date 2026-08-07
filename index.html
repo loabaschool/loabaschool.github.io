@@ -255,6 +255,73 @@
   </div>
 </section>
 
+
+
+<section>
+  <h2 class="section-title">Latest School News & Blog</h2>
+  <p>Read our latest updates and event logs straight from our official blog.</p>
+
+  <!-- Blogger Feed Container -->
+  <div id="blogger-feed" class="news-scroll-container">
+    <p style="padding: 20px; color: #555;">Loading latest posts from our blog...</p>
+  </div>
+</section>
+
+<!-- Script to automatically fetch posts from your Blogger site -->
+<script>
+  fetch('https://loabaschool.blogspot.com/feeds/posts/default?alt=json')
+    .then(response => response.json())
+    .then(data => {
+      const feedContainer = document.getElementById('blogger-feed');
+      feedContainer.innerHTML = ''; // Clear loading text
+      
+      const entries = data.feed.entry || [];
+      if(entries.length === 0) {
+        feedContainer.innerHTML = '<p>No posts found yet.</p>';
+        return;
+      }
+
+      entries.forEach(entry => {
+        const title = entry.title.$t;
+        const url = entry.link.find(l => l.rel === 'alternate').href;
+        let contentSnippet = entry.summary ? entry.summary.$t : '';
+        // Strip HTML tags for clean card text preview
+        let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').substring(0, 100) + '...';
+        
+        // Extract image if available
+        let imgUrl = 'images/logo-s.png'; // Fallback image
+        if (entry.media$thumbnail) {
+          imgUrl = entry.media$thumbnail.url;
+        }
+
+        const card = document.createElement('div');
+        card.className = 'news-card';
+        card.innerHTML = `
+          <img src="${imgUrl}" alt="${title}">
+          <div class="news-card-content">
+            <div>
+              <span class="news-tag">Blog</span>
+              <h3>${title}</h3>
+              <p>${cleanText}</p>
+            </div>
+            <a href="${url}" target="_blank" style="color: var(--green); font-weight: 600; font-size: 13.5px; text-decoration: none; margin-top: 10px; display: inline-block;">Read Full Post →</a>
+          </div>
+        `;
+        feedContainer.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching blog feed:', error);
+      document.getElementById('blogger-feed').innerHTML = '<p>Check out our updates directly on <a href="https://loabaschool.blogspot.com" target="_blank" style="color:var(--green)">our Blogger page</a>.</p>';
+    });
+</script>
+
+
+
+
+
+
+
 <section>
   <h2 class="section-title">Reviews & Community</h2>
   <p>What parents are saying about us on Facebook:</p>
