@@ -32,7 +32,6 @@
   }
   .topbar a:hover { background: var(--green-dark); }
 
-  /* Header layout fix: Space between logo and menu toggle */
   header {
     background: var(--green); color: #fff; padding: 12px 20px;
     display: flex; justify-content: space-between; align-items: center;
@@ -41,7 +40,6 @@
   }
 
   .brand { display: flex; align-items: center; }
-  /* Fixed logo dimensions so it doesn't stretch */
   .brand img { height: 42px; width: auto; max-width: 180px; object-fit: contain; }
 
   .menu-toggle {
@@ -107,6 +105,66 @@
     padding: 20px 24px; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
   .quote-box strong { color: var(--green); }
+
+  /* Custom Rotating Review Slider Styles */
+  .review-slider-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border-top: 4px solid var(--gold);
+    padding: 30px;
+    margin-top: 20px;
+    position: relative;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .review-slide {
+    display: none;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  .review-slide.active {
+    display: block;
+  }
+  .reviewer-name {
+    font-weight: 700;
+    color: var(--green);
+    font-size: 17px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .review-date {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 12px;
+  }
+  .review-text {
+    font-size: 15px;
+    color: #444;
+    font-style: italic;
+    margin-bottom: 15px;
+  }
+  .review-footer-link {
+    text-align: right;
+    margin-top: 15px;
+  }
+  .review-footer-link a {
+    color: var(--green);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .review-footer-link a:hover {
+    color: var(--gold);
+    text-decoration: underline;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
   footer { background: var(--green-dark); color: #e8e8e8; padding: 40px 20px 25px; text-align: center; }
   footer img { height: 60px; margin-bottom: 16px; opacity: 0.95; }
@@ -183,23 +241,26 @@
 
 <section>
   <h2 class="section-title">Reviews & Community</h2>
-  <p>See what parents and the community are saying about us on Facebook.</p>
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0">
-  </script>
-  <div class="fb-page"
-    data-href="https://www.facebook.com/loabaschoolmudivai"
-    data-tabs="reviews"
-    data-width="500"
-    data-height="600"
-    data-small-header="false"
-    data-adapt-container-width="true"
-    data-hide-cover="false"
-    data-show-facepile="true">
-    <blockquote cite="https://www.facebook.com/loabaschoolmudivai" class="fb-xfbml-parse-ignore">
-      <a href="https://www.facebook.com/loabaschoolmudivai">Loaba Nursery and Primary School</a>
-    </blockquote>
+  <p>What parents are saying about us on Facebook:</p>
+  
+  <div class="review-slider-container">
+    <!-- Review 1 -->
+    <div class="review-slide active">
+      <div class="reviewer-name">⭐ Laal <span style="font-size:13px; font-weight:normal; color:#555;">recommends Loaba Nursery and Primary School.</span></div>
+      <div class="review-date">Jan 21, 2022 · 📱 Facebook Review</div>
+      <p class="review-text">"Good foundation for our children, I strongly recommend this school for people residence in Mudivaithanendal."</p>
+    </div>
+
+    <!-- Review 2 -->
+    <div class="review-slide">
+      <div class="reviewer-name">⭐ Damothara Muthu <span style="font-size:13px; font-weight:normal; color:#555;">recommends Loaba Nursery and Primary School.</span></div>
+      <div class="review-date">Jun 21, 2020 · 📱 Facebook Review</div>
+      <p class="review-text">"A VERY GOOD SCHOOL FOR LEARNING. FILLED WITH HI-FI TECHNOLOGY AND IT IS THE BEST SCHOOL FOR UNDERPRIVILEGED. A GOOD SCHOOL WHICH IS EQUIVALENT AND MORE..."</p>
+    </div>
+
+    <div class="review-footer-link">
+      <a href="https://www.facebook.com/loabaschoolmudivai" target="_blank">For more reviews visit our page →</a>
+    </div>
   </div>
 </section>
 
@@ -209,7 +270,7 @@
 </section>
 
 <footer>
-  <img src="images/logo-u.png" alt="Loaba School Logo">
+  <img src="images/fav.png" alt="Loaba School Logo">
   <div class="contact-info">
     <p><strong>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102</strong></p>
     <p>📞 Mobile: 9442522311</p>
@@ -217,10 +278,10 @@
     <p>📧 Email: <a href="mailto:loabaschoolmudivai@gmail.com">loabaschoolmudivai@gmail.com</a></p>
   </div>
   <div class="socials">
-    <a href="https://wa.me/919442522311" title="WhatsApp">W</a>
-    <a href="https://facebook.com/loabaschool" title="Facebook">f</a>
-    <a href="https://youtube.com/@loabaschool" title="YouTube">Y</a>
-    <a href="https://instagram.com/loabaschool" title="I">Instagram</a>
+    <a href="https://wa.me/919442522311" title="WhatsApp">WhatsApp</a>
+    <a href="https://facebook.com/loabaschool" title="Facebook">Facebook</a>
+    <a href="https://youtube.com/@loabaschool" title="YouTube">YouTube</a>
+    <a href="https://instagram.com/loabaschool" title="Instagram">Instagram</a>
     <a href="https://twitter.com/loabaschool" title="X / Twitter">X</a>
   </div>
   <p class="copyright">© 2026 Loaba Nursery and Primary School. All rights reserved.</p>
@@ -231,6 +292,19 @@ function toggleMenu() {
   document.getElementById('sideMenu').classList.toggle('open');
   document.getElementById('overlay').classList.toggle('show');
 }
+
+// Automatic Review Card Slider Script
+let currentSlide = 0;
+const slides = document.querySelectorAll('.review-slide');
+
+function nextSlide() {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}
+
+// Change review card every 5 seconds
+setInterval(nextSlide, 5000);
 </script>
 
 </body>
