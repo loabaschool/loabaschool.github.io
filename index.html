@@ -267,37 +267,64 @@
   </div>
 </section>
 
-<!-- Script to automatically fetch posts from your Blogger site -->
+<!-- Corrected Script to automatically fetch posts from your Blogger site -->
 <script>
   fetch('https://loabaschool.blogspot.com/feeds/posts/default?alt=json')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
       const feedContainer = document.getElementById('blogger-feed');
       feedContainer.innerHTML = ''; // Clear loading text
       
-      const entries = data.feed.entry || [];
+      const entries = data.feed && data.feed.entry ? data.feed.entry : [];
       if(entries.length === 0) {
-        feedContainer.innerHTML = '<p>No posts found yet.</p>';
+        feedContainer.innerHTML = '<p style="padding: 20px;">No posts found yet.</p>';
         return;
       }
 
       entries.forEach(entry => {
-        const title = entry.title.$t;
-        const url = entry.link.find(l => l.rel === 'alternate').href;
-        let contentSnippet = entry.summary ? entry.summary.$t : '';
-        // Strip HTML tags for clean card text preview
-        let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').substring(0, 100) + '...';
+        const title = entry.title ? entry.title.$t : 'Untitled Post';
         
-        // Extract image if available
-        let imgUrl = 'images/logo-s.png'; // Fallback image
+        // Find the alternate URL link
+        let url = '#';
+        if (entry.link) {
+          const altLink = entry.link.find(l => l.rel === 'alternate');
+          if (altLink) url = altLink.href;
+        }
+
+        // Get content snippet safely
+        let contentSnippet = '';
+        if (entry.summary) {
+          contentSnippet = entry.summary.$t;
+        } else if (entry.content) {
+          contentSnippet = entry.content.$t;
+        }
+        
+        let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').trim();
+        if (cleanText.length > 90) {
+          cleanText = cleanText.substring(0, 90) + '...';
+        }
+
+        // Extract image safely from content or fallback to school logo
+        let imgUrl = 'images/logo-s.png'; 
         if (entry.media$thumbnail) {
           imgUrl = entry.media$thumbnail.url;
+        } else {
+          // Look for an image inside the post content HTML if no thumbnail exists
+          const imgMatch = contentSnippet.match(/<img[^>]+src="([^">]+)"/);
+          if (imgMatch && imgMatch[1]) {
+            imgUrl = imgMatch[1];
+          }
         }
 
         const card = document.createElement('div');
         card.className = 'news-card';
         card.innerHTML = `
-          <img src="${imgUrl}" alt="${title}">
+          <img src="${imgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
           <div class="news-card-content">
             <div>
               <span class="news-tag">Blog</span>
@@ -312,11 +339,9 @@
     })
     .catch(error => {
       console.error('Error fetching blog feed:', error);
-      document.getElementById('blogger-feed').innerHTML = '<p>Check out our updates directly on <a href="https://loabaschool.blogspot.com" target="_blank" style="color:var(--green)">our Blogger page</a>.</p>';
+      document.getElementById('blogger-feed').innerHTML = '<p style="padding: 20px;">Check out our updates directly on <a href="https://loabaschool.blogspot.com" target="_blank" style="color:var(--green); font-weight:600;">our official Blogger page →</a></p>';
     });
 </script>
-
-
 
 
 
