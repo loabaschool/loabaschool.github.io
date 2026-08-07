@@ -117,6 +117,53 @@
   .hero h1 { font-size: clamp(24px, 5vw, 36px); color: var(--gold); margin-bottom: 10px; letter-spacing: 0.5px; }
   .hero p { font-size: 16px; opacity: 0.95; max-width: 600px; margin: 0 auto; }
 
+  /* Facilities Photo Slideshow Styles */
+  .facility-slideshow {
+    position: relative;
+    max-width: 960px;
+    margin: 30px auto 10px;
+    padding: 0 20px;
+  }
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    background: #000;
+  }
+  .facility-slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+  }
+  .facility-slide.active { opacity: 1; }
+  .slide-caption {
+    width: 100%;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: #fff;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .slideshow-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+  }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #ccc; cursor: pointer; transition: background 0.3s;
+  }
+  .dot.active { background: var(--gold); width: 24px; border-radius: 6px; }
+
   section { max-width: 960px; margin: 0 auto; padding: 45px 20px; }
   .section-title {
     color: var(--green); font-size: 24px; margin-bottom: 18px;
@@ -308,11 +355,8 @@
 <div class="hero">
   <img loading="lazy" src="images/badge-30years.png" alt="30 Years of Educational Service">
   <h1>LOABA Nursery and Primary School</h1>
-  <p>Mudivaithanendal, Tamil Nadu 628102 — Celebrating 30 Years of Educational Service Since 1996</p>
+  <p>Mudivaithanendal, Tamil Nadu 628102 — Celebrating 30 Years of Educational Service Since 1996[span_0](start_span)[span_0](end_span)</p>
 </div>
-
-
-
 
 <!-- Facilities Photo Slideshow Gallery -->
 <div class="facility-slideshow">
@@ -333,12 +377,6 @@
     <span class="dot" onclick="currentSlide(2)"></span>
   </div>
 </div>
-
-
-
-
-
-
 
 <section>
   <h2 class="section-title">Why We Are</h2>
@@ -397,7 +435,7 @@
 
 <section>
   <h2 class="section-title">About Us</h2>
-  <p>Loaba Nursery and Primary School stands as a polestar in Thoothukudi District, guiding every student who passes through. The school proudly celebrates <strong>30 years of educational service since its founding in 1996</strong>.</p>
+  <p>Loaba Nursery and Primary School stands as a polestar in Thoothukudi District, guiding every student who passes through. The school proudly celebrates <strong>30 years of educational service since its founding in 1996</strong>[span_1](start_span)[span_1](end_span).</p>
 </section>
 
 <footer>
@@ -434,15 +472,41 @@ function toggleDropdown(btn) {
   }
 }
 
-let currentSlide = 0;
+// Review Slider Script
+let currentSlideIdx = 0;
 const slides = document.querySelectorAll('.review-slide');
-function nextSlide() {
-  slides[currentSlide].classList.remove('active');
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add('active');
+function nextReviewSlide() {
+  slides[currentSlideIdx].classList.remove('active');
+  currentSlideIdx = (currentSlideIdx + 1) % slides.length;
+  slides[currentSlideIdx].classList.add('active');
 }
-setInterval(nextSlide, 5000);
+setInterval(nextReviewSlide, 5000);
 
+// Facilities Photo Slideshow Script
+let slideIndex = 0;
+const facilitySlides = document.querySelectorAll('.facility-slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(n) {
+  facilitySlides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+  
+  slideIndex = (n + facilitySlides.length) % facilitySlides.length;
+  facilitySlides[slideIndex].classList.add('active');
+  dots[slideIndex].classList.add('active');
+}
+
+function nextSlide() {
+  showSlide(slideIndex + 1);
+}
+
+function currentSlide(n) {
+  showSlide(n);
+}
+
+setInterval(nextSlide, 4000);
+
+// Blogger Feed Script
 const blogUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://loabaschool.blogspot.com/feeds/posts/default?alt=json');
 fetch(blogUrl)
   .then(response => response.json())
@@ -479,13 +543,4 @@ const slider = document.getElementById("blogger-feed");
 if (slider) {
     setInterval(() => {
         if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5){
-            slider.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-            slider.scrollBy({ left: 340, behavior: "smooth" });
-        }
-    }, 4000);
-}
-</script>
-
-</body>
-</html>
+            slider.scrollTo({ left: 0, be
