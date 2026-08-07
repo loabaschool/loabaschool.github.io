@@ -304,19 +304,59 @@
     font-size:12px;
   }
 
-  footer { background: var(--green-dark); color: #e8e8e8; padding: 40px 20px 25px; text-align: center; }
-  footer img { height: 60px; margin-bottom: 16px; opacity: 0.95; }
-  .contact-info p { margin-bottom: 6px; font-size: 14.5px; }
-  .contact-info a { color: var(--gold); text-decoration: none; }
-  .socials { margin: 22px 0 10px; }
+  /* Professional Footer Layout */
+  footer { 
+    background: var(--green-dark); 
+    color: #e8e8e8; 
+    padding: 60px 20px 20px; 
+  }
+  .footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    text-align: left;
+  }
+  .footer-brand img { height: 45px; margin-bottom: 15px; opacity: 0.95; }
+  .footer-brand p { font-size: 14px; opacity: 0.85; margin-bottom: 20px; max-width: 320px; line-height: 1.5; }
+  .footer-links h4 { color: var(--gold); margin-bottom: 15px; font-size: 16px; letter-spacing: 0.5px; }
+  .footer-links a { display: block; color: #ccc; text-decoration: none; margin-bottom: 10px; font-size: 14px; transition: 0.2s; }
+  .footer-links a:hover { color: #fff; padding-left: 3px; }
+
+  .socials { margin: 15px 0 20px; display: flex; gap: 8px; }
   .socials a {
     display: inline-flex; align-items: center; justify-content: center;
-    margin: 0 6px; width: 38px; height: 38px; border-radius: 50%;
+    width: 36px; height: 36px; border-radius: 50%;
     background: var(--gold); color: var(--green-dark); font-weight: 700;
     text-decoration: none; font-size: 14px; transition: 0.2s;
   }
   .socials a:hover { background: #fff; }
-  .copyright { font-size: 13px; opacity: 0.7; margin-top: 16px; }
+
+  .back-to-top {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: 0.2s;
+  }
+  .back-to-top:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--gold);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 40px;
+    padding-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.7;
+  }
 </style>
 </head>
 <body>
@@ -355,7 +395,7 @@
 <div class="hero">
   <img loading="lazy" src="images/badge-30years.png" alt="30 Years of Educational Service">
   <h1>LOABA Nursery and Primary School</h1>
-  <p>Mudivaithanendal, Tamil Nadu 628102 — Celebrating 30 Years of Educational Service Since 1996[span_0](start_span)[span_0](end_span)</p>
+  <p>Mudivaithanendal, Tamil Nadu 628102 — Celebrating 30 Years of Educational Service Since 1996</p>
 </div>
 
 <!-- Facilities Photo Slideshow Gallery -->
@@ -439,23 +479,37 @@
 </section>
 
 <footer>
-  <img loading="lazy" src="images/logo-u.png" alt="Loaba School Logo">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img loading="lazy" src="images/logo-u.png" alt="Loaba School Logo">
+      <p>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102<br>📞 Mobile: 9442522311<br>📧 Email: loabaschoolmudivai@gmail.com</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+        <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">I</a>
+        <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">W</a>
+      </div>
+      <a href="#" class="back-to-top">↑ BACK TO TOP</a>
+    </div>
 
-<p>Loaba Nursery and Primary School stands as a polestar in Thoothukudi District, guiding every student who passes through. The school proudly celebrates <strong>30 years of educational service since its founding in 1996</strong>.</p>
+    <div class="footer-links">
+      <h4>Site Map</h4>
+      <a href="index.html">Homepage</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
 
-  <div class="contact-info">
-    <p><strong>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102</strong></p>
-    <p>📞 Mobile: 9442522311</p>
-    <p>☎️ Phone: 0461-2269399 / 0461-2269252</p>
-    <p>📧 Email: <a href="mailto:loabaschoolmudivai@gmail.com">loabaschoolmudivai@gmail.com</a></p>
+    <div class="footer-links">
+      <h4>Legal & Info</h4>
+      <a href="about.html">About School</a>
+      <a href="management.html">Management</a>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
   </div>
-  <div class="socials">
-    <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">W</a>
-    <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
-    <a href="https://youtube.com/@loabaschool" title="YouTube" target="_blank" rel="noopener noreferrer">Y</a>
-    <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">I</a>
+
+  <div class="footer-bottom">
+    © 1996–2026 Loaba Nursery and Primary School. All rights reserved.
   </div>
-  <p class="copyright">©2026 Loaba Nursery and Primary School. All rights reserved.</p>
 </footer>
 
 <script>
@@ -525,11 +579,9 @@ fetch(blogUrl)
       let contentSnippet = entry.summary?.$t || entry.content?.$t || '';
       let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').substring(0, 90) + '...';
       
-      // Get image and convert Blogger's low-res thumbnail link to high-res
       let rawImgUrl = entry.media$thumbnail?.url || contentSnippet.match(/<img[^>]+src="([^">]+)"/)?.[1] || 'images/logo-s.png';
       let highResImgUrl = rawImgUrl;
       if (rawImgUrl.includes('blogger.googleusercontent.com') || rawImgUrl.includes('bp.blogspot.com')) {
-        // Remove sizing parameters like /s72-c/ or /w72-h72/ to fetch the full image
         highResImgUrl = rawImgUrl.replace(/\/s[0-9]+(\-c)?\//, '/s1600/').replace(/\/w[0-9]+-h[0-9]+(\-c)?\//, '/s1600/');
       }
 
@@ -550,7 +602,6 @@ fetch(blogUrl)
     });
   });
 
-
 const slider = document.getElementById("blogger-feed");
 if (slider) {
     setInterval(() => {
@@ -565,4 +616,3 @@ if (slider) {
 
 </body>
 </html>
-
