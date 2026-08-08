@@ -448,12 +448,11 @@
 <section>
   <h2 class="section-title">Latest News & Blogs</h2>
   <p>Read our latest updates and event logs straight from our official blog.</p>
+  <!-- Native JSON-in-Script RSS Feed Implementation (Alternative 1) for 100% Reliability -->
   <div id="blog-posts-container" class="blog-slider">
-  <script src="https://loabaschool.blogspot.com/feeds/posts/default?alt=json-in-script&callback=displayBlogPosts" async></script>
-</div>
-
-    <p style="padding: 15px; color: #555;">Loading latest posts...</p>
+    <p style="padding: 15px; color: #555;" id="blog-loading-text">Loading latest posts...</p>
   </div>
+  <script src="https://loabaschool.blogspot.com/feeds/posts/default?alt=json-in-script&callback=displayBlogPosts" async></script>
 </section>
 
 <section>
@@ -476,20 +475,11 @@
   </div>
 </section>
 
-
-
 <footer>
   <div class="footer-container">
     <div class="footer-brand">
       <img loading="lazy" src="images/logo-u.png" alt="Loaba School Logo">
-      
-<section>
-  <h2 class="section-title">About Us</h2>
-  <p>Loaba Nursery and Primary School stands as a polestar in Thoothukudi District, guiding every student who passes through. The school proudly celebrates <strong>30 years of educational service since its founding in 1996</strong>.</p>
-</section>
-
-
-
+      <p>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102<br>📞 Mobile: 9442522311<br>📧 Email: loabaschoolmudivai@gmail.com</p>
       <div class="socials">
         <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
         <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">I</a>
@@ -501,7 +491,7 @@
     <div class="footer-links">
       <h4>Site Map</h4>
       <a href="index.html">Homepage</a>
-<a href="about.html">About School</a>
+      <a href="about.html">About School</a>
       <a href="management.html">Management</a>
       <a href="facilities.html">Facilities</a>
       <a href="gallery.html">Gallery</a>
@@ -515,7 +505,7 @@
   </div>
 
   <div class="footer-bottom">
-    ©2026 Loaba Nursery and Primary School. All rights reserved.
+    © 1996–2026 Loaba Nursery and Primary School. All rights reserved.
   </div>
 </footer>
 
@@ -570,49 +560,60 @@ function currentSlide(n) {
 
 setInterval(nextSlide, 4000);
 
-// Blogger Feed Script with High-Resolution Image Fix
-const blogUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://loabaschool.blogspot.com/feeds/posts/default?alt=json');
-fetch(blogUrl)
-  .then(response => response.json())
-  .then(data => {
-    const blogData = JSON.parse(data.contents);
-    const feedContainer = document.getElementById('blogger-feed');
-    feedContainer.innerHTML = ''; 
-    const entries = blogData.feed && blogData.feed.entry ? blogData.feed.entry : [];
-    if(entries.length === 0) { feedContainer.innerHTML = '<p style="padding: 15px;">No posts found yet.</p>'; return; }
-    entries.forEach(entry => {
-      const title = entry.title ? entry.title.$t : 'Untitled Post';
-      let url = entry.link.find(l => l.rel === 'alternate')?.href || '#';
-      let contentSnippet = entry.summary?.$t || entry.content?.$t || '';
-      let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').substring(0, 90) + '...';
-      
-      let rawImgUrl = entry.media$thumbnail?.url || contentSnippet.match(/<img[^>]+src="([^">]+)"/)?.[1] || 'images/logo-s.png';
-      let highResImgUrl = rawImgUrl;
-      if (rawImgUrl.includes('blogger.googleusercontent.com') || rawImgUrl.includes('bp.blogspot.com')) {
-        highResImgUrl = rawImgUrl.replace(/\/s[0-9]+(\-c)?\//, '/s1600/').replace(/\/w[0-9]+-h[0-9]+(\-c)?\//, '/s1600/');
+// Native Blogger JSON-in-Script Callback Function for 100% Reliable Loading
+function displayBlogPosts(json) {
+  const feedContainer = document.getElementById('blog-posts-container');
+  feedContainer.innerHTML = ''; 
+  
+  const entries = json.feed && json.feed.entry ? json.feed.entry : [];
+  if (entries.length === 0) { 
+    feedContainer.innerHTML = '<p style="padding: 15px; color: #555;">No posts found yet.</p>'; 
+    return; 
+  }
+
+  entries.forEach(entry => {
+    const title = entry.title.$t;
+    let url = '#';
+    if (entry.link) {
+      for (let i = 0; i < entry.link.length; i++) {
+        if (entry.link[i].rel === 'alternate') {
+          url = entry.link[i].href;
+          break;
+        }
       }
+    }
 
-      const card = document.createElement('div');
-      card.className = 'news-card';
-      card.innerHTML = `
-        <img loading="lazy" src="${highResImgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
-        <div class="news-card-content">
-          <span class="news-tag">Blog</span>
-          <h3>${title}</h3>
-          <p>${cleanText}</p>
-        </div>
-        <div style="padding: 0 15px 15px 15px;">
-          <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--green); font-weight: 600; font-size: 13.5px; text-decoration: none;">Read Full Post →</a>
-        </div>
-      `;
-      feedContainer.appendChild(card);
-    });
+    let contentSnippet = entry.summary ? entry.summary.$t : (entry.content ? entry.content.$t : '');
+    let cleanText = contentSnippet.replace(/<[^>]*>?/gm, '').substring(0, 90) + '...';
+    
+    let rawImgUrl = entry.media$thumbnail ? entry.media$thumbnail.url : (contentSnippet.match(/<img[^>]+src="([^">]+)"/)?.[1] || 'images/logo-s.png');
+    let highResImgUrl = rawImgUrl;
+    if (rawImgUrl.includes('blogger.googleusercontent.com') || rawImgUrl.includes('bp.blogspot.com')) {
+      highResImgUrl = rawImgUrl.replace(/\/s[0-9]+(\-c)?\//, '/s1600/').replace(/\/w[0-9]+-h[0-9]+(\-c)?\//, '/s1600/');
+    }
+
+    const card = document.createElement('div');
+    card.className = 'news-card';
+    card.innerHTML = `
+      <img loading="lazy" src="${highResImgUrl}" alt="${title}" onerror="this.src='images/logo-s.png'">
+      <div class="news-card-content">
+        <span class="news-tag">Blog</span>
+        <h3>${title}</h3>
+        <p>${cleanText}</p>
+      </div>
+      <div style="padding: 0 15px 15px 15px;">
+        <a href="${url}" target="_blank" rel="noopener noreferrer" style="color: var(--green); font-weight: 600; font-size: 13.5px; text-decoration: none;">Read Full Post →</a>
+      </div>
+    `;
+    feedContainer.appendChild(card);
   });
+}
 
-const slider = document.getElementById("blogger-feed");
+// Auto scroll blog slider
+const slider = document.getElementById("blog-posts-container");
 if (slider) {
     setInterval(() => {
-        if(slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5){
+        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 5) {
             slider.scrollTo({ left: 0, behavior: "smooth" });
         } else {
             slider.scrollBy({ left: 340, behavior: "smooth" });
