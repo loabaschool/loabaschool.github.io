@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Us - Loaba Nursery & Primary School</title>
 
-<!-- SEO Meta Tags -->
 <meta name="description" content="Get in touch with Loaba Nursery and Primary School, Mudivaithanendal, Thoothukudi. Find our phone numbers, address, and email.">
 <meta name="keywords" content="Loaba School Contact, Mudivaithanendal School Phone, Loaba School Address">
 <meta name="author" content="Loaba Nursery and Primary School">
@@ -96,7 +95,6 @@
   }
   .overlay.show { display: block; }
 
-  /* Page Header Hero */
   .page-hero {
     text-align: center; padding: 45px 20px;
     background: linear-gradient(135deg, var(--green), var(--green-dark));
@@ -114,7 +112,6 @@
     content: ''; flex: 1; height: 3px; background: var(--gold); min-width: 40px;
   }
 
-  /* Responsive Contact Layout */
   .contact-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -148,7 +145,6 @@
     text-decoration: underline;
   }
 
-  /* Responsive Contact Form */
   .form-group {
     margin-bottom: 20px;
   }
@@ -186,19 +182,58 @@
     background: var(--green-dark);
   }
 
-  footer { background: var(--green-dark); color: #e8e8e8; padding: 40px 20px 25px; text-align: center; }
-  footer img { height: 60px; margin-bottom: 16px; opacity: 0.95; }
-  .contact-info p { margin-bottom: 6px; font-size: 14.5px; }
-  .contact-info a { color: var(--gold); text-decoration: none; }
-  .socials { margin: 22px 0 10px; }
+  /* Professional Footer Layout — matches index.html */
+  footer {
+    background: var(--green-dark);
+    color: #e8e8e8;
+    padding: 60px 20px 20px;
+  }
+  .footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    text-align: left;
+  }
+  .footer-brand img { height: 45px; margin-bottom: 15px; opacity: 0.95; }
+  .footer-brand p { font-size: 14px; opacity: 0.85; margin-bottom: 20px; max-width: 320px; line-height: 1.5; }
+  .footer-links h4 { color: var(--gold); margin-bottom: 15px; font-size: 16px; letter-spacing: 0.5px; }
+  .footer-links a { display: block; color: #ccc; text-decoration: none; margin-bottom: 10px; font-size: 14px; transition: 0.2s; }
+  .footer-links a:hover { color: #fff; padding-left: 3px; }
+  .socials { margin: 15px 0 20px; display: flex; gap: 8px; }
   .socials a {
     display: inline-flex; align-items: center; justify-content: center;
-    margin: 0 6px; width: 38px; height: 38px; border-radius: 50%;
+    width: 36px; height: 36px; border-radius: 50%;
     background: var(--gold); color: var(--green-dark); font-weight: 700;
     text-decoration: none; font-size: 14px; transition: 0.2s;
   }
   .socials a:hover { background: #fff; }
-  .copyright { font-size: 13px; opacity: 0.7; margin-top: 16px; }
+  .back-to-top {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: 0.2s;
+  }
+  .back-to-top:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--gold);
+  }
+  .footer-bottom {
+    background: var(--gold);
+    color: var(--green-dark);
+    margin: 0;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
 </style>
 </head>
 <body>
@@ -222,14 +257,14 @@
   <button class="dropdown-btn" onclick="toggleDropdown(this)">About Us</button>
   <div class="dropdown-container">
     <a href="management.html">Management</a>
-    <a href="committees.html">Committees</a>
+    <a href="about.html">About Us</a>
     <a href="code-of-conduct.html">Code of Conduct</a>
   </div>
 
   <a href="admission.html">Admissions</a>
   <a href="facilities.html">Facilities</a>
   <a href="gallery.html">Gallery</a>
-  <a href="contact.html">Contact Us</a>
+  <a href="contact.html" style="color: var(--gold); font-weight: 600;">Contact Us</a>
 </div>
 <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
@@ -242,7 +277,6 @@
   <h2 class="section-title">Get in Touch</h2>
   <div class="contact-grid">
     
-    <!-- School Contact Info Card -->
     <div class="contact-card">
       <h3>🏫 School Address</h3>
       <p><strong>Loaba Nursery and Primary School</strong></p>
@@ -252,10 +286,8 @@
       <p>📧 <strong>Email:</strong> <a href="mailto:loabaschoolmudivai@gmail.com">loabaschoolmudivai@gmail.com</a></p>
     </div>
 
-    <!-- Quick Message Form Card -->
     <div class="contact-card">
       <h3>✉️ Send Us a Message</h3>
-      <!-- You can connect this form action to a free service like Formspree.io -->
       <form action="https://formspree.io/f/xbgrddve" method="POST">
         <div class="form-group">
           <label for="name">Your Name</label>
@@ -277,20 +309,37 @@
 </section>
 
 <footer>
-  <img loading="lazy" src="images/fav.png" alt="Loaba School Logo">
-  <div class="contact-info">
-    <p><strong>MAIN STREET, Mudivaithanendal, Tamil Nadu 628102</strong></p>
-    <p>📞 Mobile: 9442522311</p>
-    <p>☎️ Phone: 0461-2269399 / 0461-2269252</p>
-    <p>📧 Email: <a href="mailto:loabaschoolmudivai@gmail.com">loabaschoolmudivai@gmail.com</a></p>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img loading="lazy" src="images/logo-u.png" alt="Loaba School Logo">
+      <p>Loaba Nursery and Primary School stands as a polestar in Thoothukudi District, celebrating 30 years of educational service since its founding in 1996.</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+        <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">I</a>
+        <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">W</a>
+      </div>
+      <a href="#" class="back-to-top">↑ BACK TO TOP</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Site Map</h4>
+      <a href="index.html">Homepage</a>
+      <a href="about.html">About School</a>
+      <a href="management.html">Management</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Legal & Info</h4>
+      <a href="terms.html">Terms & Conditions</a>
+    </div>
   </div>
-  <div class="socials">
-    <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">W</a>
-    <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
-    <a href="https://youtube.com/@loabaschool" title="YouTube" target="_blank" rel="noopener noreferrer">Y</a>
-    <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">I</a>
+
+  <div class="footer-bottom">
+    © 1996–2026 Loaba Nursery and Primary School. All rights reserved.
   </div>
-  <p class="copyright">©2026 Loaba Nursery and Primary School. All rights reserved.</p>
 </footer>
 
 <script>
