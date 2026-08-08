@@ -1,1 +1,326 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Loaba Nursery & Primary School</title>
+
+<meta name="description" content="Privacy Policy for Loaba Nursery and Primary School, Mudivaithanendal, Thoothukudi.">
+<meta name="keywords" content="Loaba School Privacy Policy, School Website Data Protection">
+<meta name="author" content="Loaba Nursery and Primary School">
+
+<style>
+  html { scroll-behavior: smooth; }
+  :root {
+    --green: #0d4a3d;
+    --green-dark: #08302a;
+    --gold: #d4a24c;
+    --bg: #f8f7f4;
+    --text: #2a2a2a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { 
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    background: var(--green-dark); color: #fff; text-align: center;
+    padding: 12px 20px; font-size: 14px; font-weight: 500;
+    display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;
+    border-bottom: 2px solid rgba(212, 162, 76, 0.3);
+  }
+  .topbar span { color: var(--gold); font-weight: 600; }
+  .topbar a {
+    background: var(--gold); color: var(--green-dark); padding: 6px 16px; border-radius: 20px;
+    text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.2s;
+  }
+  .topbar a:hover { background: #fff; }
+
+  header {
+    background: var(--green); color: #fff; padding: 12px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  .brand { display: flex; align-items: center; }
+  .brand img { height: 42px; width: auto; max-width: 180px; object-fit: contain; }
+
+  .menu-toggle {
+    background: none; border: none; color: #fff; font-size: 26px; cursor: pointer;
+    padding: 4px 8px;
+  }
+
+  .side-menu {
+    position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
+    background: var(--green-dark); padding: 70px 20px 20px;
+    transition: right 0.3s ease; z-index: 1001; box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+  .side-menu.open { right: 0; }
+  .side-menu a {
+    display: block; color: #fff; text-decoration: none; padding: 14px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 16px;
+  }
+  .side-menu a:hover { color: var(--gold); }
+  
+  .dropdown-btn {
+    background: none; border: none; width: 100%; text-align: left;
+    color: #fff; font-size: 16px; padding: 14px 10px; cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.1); display: flex;
+    justify-content: space-between; align-items: center; font-family: inherit;
+  }
+  .dropdown-btn:hover { color: var(--gold); }
+  .dropdown-btn::after { content: '▾'; font-size: 14px; transition: transform 0.3s ease; }
+  .dropdown-btn.active::after { transform: rotate(180deg); }
+  .dropdown-container {
+    display: none; background: rgba(0,0,0,0.15); padding-left: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .dropdown-container a { border-bottom: none; font-size: 15px; padding: 12px 10px; color: #e2e8f0; }
+  .dropdown-container a:hover { color: var(--gold); }
+
+  .close-btn {
+    position: absolute; top: 20px; right: 20px; background: none; border: none;
+    color: #fff; font-size: 24px; cursor: pointer;
+  }
+  
+  .overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 1000;
+  }
+  .overlay.show { display: block; }
+
+  .page-hero {
+    text-align: center; padding: 45px 20px;
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: #fff;
+  }
+  .page-hero h1 { font-size: clamp(26px, 5vw, 36px); color: var(--gold); margin-bottom: 8px; }
+  .page-hero p { font-size: 15px; opacity: 0.95; max-width: 600px; margin: 0 auto; }
+
+  section { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+  .section-title {
+    color: var(--green); font-size: 22px; margin: 25px 0 10px;
+  }
+  section p { margin-bottom: 15px; color: #444; font-size: 15px; }
+  section ul { margin: 0 0 15px 20px; color: #444; font-size: 15px; }
+  section ul li { margin-bottom: 8px; }
+
+  .terms-box {
+    background: #fff;
+    padding: 35px;
+    border-radius: 12px;
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .last-updated {
+    font-size: 13px;
+    color: #888;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  /* Professional Footer Layout — matches index.html */
+  footer {
+    background: var(--green-dark);
+    color: #e8e8e8;
+    padding: 60px 20px 20px;
+  }
+  .footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    text-align: left;
+  }
+  .footer-brand img { height: 45px; margin-bottom: 15px; opacity: 0.95; }
+  .footer-brand p { font-size: 14px; opacity: 0.85; margin-bottom: 20px; max-width: 320px; line-height: 1.5; }
+  .footer-links h4 { color: var(--gold); margin-bottom: 15px; font-size: 16px; letter-spacing: 0.5px; }
+  .footer-links a { display: block; color: #ccc; text-decoration: none; margin-bottom: 10px; font-size: 14px; transition: 0.2s; }
+  .footer-links a:hover { color: #fff; padding-left: 3px; }
+  .socials { margin: 15px 0 20px; display: flex; gap: 8px; }
+  .socials a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gold); color: var(--green-dark); font-weight: 700;
+    text-decoration: none; font-size: 14px; transition: 0.2s;
+  }
+  .socials a:hover { background: #fff; }
+  .back-to-top {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: 0.2s;
+  }
+  .back-to-top:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--gold);
+  }
+  .footer-bottom {
+    background: var(--gold);
+    color: var(--green-dark);
+    margin: 0;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🎓 <span>Admissions Open 2026–2027</span>
+  <a href="admission.html">Apply Now →</a>
+</div>
+
+<header>
+  <div class="brand">
+    <img loading="lazy" src="images/logo-s.png" alt="Loaba Nursery and Primary School">
+  </div>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
+</header>
+
+<div class="side-menu" id="sideMenu">
+  <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">✕</button>
+  <a href="index.html">Home</a>
+  
+  <button class="dropdown-btn" onclick="toggleDropdown(this)">About Us</button>
+  <div class="dropdown-container">
+    <a href="management.html">Management</a>
+    <a href="about.html">About Us</a>
+    <a href="code-of-conduct.html">Code of Conduct</a>
+  </div>
+
+  <a href="admission.html">Admissions</a>
+  <a href="facilities.html">Facilities</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<div class="page-hero">
+  <h1>Privacy Policy</h1>
+  <p>How Loaba Nursery and Primary School collects, uses, and protects your information.</p>
+</div>
+
+<section>
+  <div class="terms-box">
+    <p class="last-updated">Last updated: August 2026</p>
+
+    <p>This Privacy Policy explains how <strong>Loaba Nursery and Primary School</strong> ("we," "our," "us") collects, uses, and protects information when you visit our website or submit an inquiry through it. By using this website, you agree to the practices described below.</p>
+
+    <h3 class="section-title">1. Information We Collect</h3>
+    <p>We collect information you voluntarily provide when you fill out a form on this website, including:</p>
+    <ul>
+      <li>Your name and your child's name (Admission Inquiry form)</li>
+      <li>Phone number</li>
+      <li>Grade or class of interest</li>
+      <li>Any message or notes you choose to include</li>
+    </ul>
+    <p>We do not collect this information automatically — it is only submitted when you fill in and send a form.</p>
+
+    <h3 class="section-title">2. How We Use Your Information</h3>
+    <p>Information submitted through our Admission Inquiry and Contact forms is used solely to:</p>
+    <ul>
+      <li>Respond to your inquiry</li>
+      <li>Process admission applications</li>
+      <li>Contact you regarding your child's enrollment</li>
+    </ul>
+    <p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+    <h3 class="section-title">3. Third-Party Services</h3>
+    <p>Our website uses the following third-party services to operate certain features:</p>
+    <ul>
+      <li><strong>Formspree</strong> — processes and delivers form submissions (Admission Inquiry, Contact) to our email. Formspree's own privacy policy governs how they handle this data in transit.</li>
+      <li><strong>Facebook</strong> — our Reviews & Community section links to and may embed content from our official Facebook Page.</li>
+      <li><strong>Blogger (Google)</strong> — our Latest News & Blogs section pulls publicly available post data from our official Blogger feed.</li>
+    </ul>
+    <p>These third-party platforms may collect data according to their own privacy policies, which we encourage you to review separately.</p>
+
+    <h3 class="section-title">4. Children's Privacy</h3>
+    <p>Our Admission Inquiry form may include a child's name and grade for enrollment purposes only. We do not knowingly collect any other personal data about children through this website, and this information is used exclusively for admission processing by authorized school staff.</p>
+
+    <h3 class="section-title">5. Data Storage & Security</h3>
+    <p>Form submissions are delivered directly to our official school email via Formspree and are not stored in a public database on this website. We take reasonable precautions to protect the information shared with us, though no method of electronic transmission is 100% secure.</p>
+
+    <h3 class="section-title">6. Cookies</h3>
+    <p>This website does not use tracking cookies of its own. Embedded third-party content (such as Facebook widgets) may set cookies in accordance with their own policies when loaded in your browser.</p>
+
+    <h3 class="section-title">7. Your Rights</h3>
+    <p>You may request that we delete any information you've submitted to us by contacting us directly using the details below. We will act on such requests promptly.</p>
+
+    <h3 class="section-title">8. Changes to This Policy</h3>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices. Any updates will be posted on this page with a revised "Last updated" date.</p>
+
+    <h3 class="section-title">9. Contact Us</h3>
+    <p>If you have any questions about this Privacy Policy or how your information is handled, please contact us at <a href="mailto:loabaschoolmudivai@gmail.com" style="color:var(--green); font-weight:600;">loabaschoolmudivai@gmail.com</a> or call our office at 9442522311.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img loading="lazy" src="images/logo-u.png" alt="Loaba School Logo">
+      <p>Loaba Nursery and Primary School stands as a polestar in Thoothukudi District, celebrating 30 years of educational service since its founding in 1996.</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+        <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">I</a>
+        <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">W</a>
+      </div>
+      <a href="#" class="back-to-top">↑ BACK TO TOP</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Site Map</h4>
+      <a href="index.html">Homepage</a>
+      <a href="about.html">About School</a>
+      <a href="management.html">Management</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Legal & Info</h4>
+      <a href="terms.html">Terms & Conditions</a>
+      <a href="privacy.html" style="color: var(--gold); font-weight: 600;">Privacy Policy</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 1996–2026 Loaba Nursery and Primary School. All rights reserved.
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('sideMenu').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+function toggleDropdown(btn) {
+  btn.classList.toggle('active');
+  const container = btn.nextElementSibling;
+  if (container.style.display === 'block') {
+    container.style.display = 'none';
+  } else {
+    container.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html> 
