@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions - Loaba Nursery & Primary School</title>
+
+<meta name="description" content="Terms and Conditions for Loaba Nursery and Primary School, Mudivaithanendal, Thoothukudi.">
+<meta name="keywords" content="Loaba School Terms, School Website Policies">
+<meta name="author" content="Loaba Nursery and Primary School">
+<link rel="icon" type="image/png" href="images/logo-s.png">
+
+<style>
+  html { scroll-behavior: smooth; }
+  :root {
+    --green: #0d4a3d;
+    --green-dark: #08302a;
+    --gold: #d4a24c;
+    --bg: #f8f7f4;
+    --text: #2a2a2a;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { 
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    background: var(--green-dark); color: #fff; text-align: center;
+    padding: 12px 20px; font-size: 14px; font-weight: 500;
+    display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;
+    border-bottom: 2px solid rgba(212, 162, 76, 0.3);
+  }
+  .topbar span { color: var(--gold); font-weight: 600; }
+  .topbar a {
+    background: var(--gold); color: var(--green-dark); padding: 6px 16px; border-radius: 20px;
+    text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.2s;
+  }
+  .topbar a:hover { background: #fff; }
+
+  header {
+    background: var(--green); color: #fff; padding: 12px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid var(--gold);
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  .brand { display: flex; align-items: center; }
+  .brand img { height: 42px; width: auto; max-width: 180px; object-fit: contain; }
+
+  .menu-toggle {
+    background: none; border: none; color: #fff; font-size: 26px; cursor: pointer;
+    padding: 4px 8px;
+  }
+
+  .side-menu {
+    position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
+    background: var(--green-dark); padding: 70px 20px 20px;
+    transition: right 0.3s ease; z-index: 1001; box-shadow: -4px 0 20px rgba(0,0,0,0.3);
+    overflow-y: auto;
+  }
+  .side-menu.open { right: 0; }
+  .side-menu a {
+    display: block; color: #fff; text-decoration: none; padding: 14px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 16px;
+  }
+  .side-menu a:hover { color: var(--gold); }
+  
+  .dropdown-btn {
+    background: none; border: none; width: 100%; text-align: left;
+    color: #fff; font-size: 16px; padding: 14px 10px; cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.1); display: flex;
+    justify-content: space-between; align-items: center; font-family: inherit;
+  }
+  .dropdown-btn:hover { color: var(--gold); }
+  .dropdown-btn::after { content: '▾'; font-size: 14px; transition: transform 0.3s ease; }
+  .dropdown-btn.active::after { transform: rotate(180deg); }
+  .dropdown-container {
+    display: none; background: rgba(0,0,0,0.15); padding-left: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .dropdown-container a { border-bottom: none; font-size: 15px; padding: 12px 10px; color: #e2e8f0; }
+  .dropdown-container a:hover { color: var(--gold); }
+
+  .close-btn {
+    position: absolute; top: 20px; right: 20px; background: none; border: none;
+    color: #fff; font-size: 24px; cursor: pointer;
+  }
+  
+  .overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 1000;
+  }
+  .overlay.show { display: block; }
+
+  .page-hero {
+    text-align: center; padding: 45px 20px;
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: #fff;
+  }
+  .page-hero h1 { font-size: clamp(26px, 5vw, 36px); color: var(--gold); margin-bottom: 8px; }
+  .page-hero p { font-size: 15px; opacity: 0.95; max-width: 600px; margin: 0 auto; }
+
+  section { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+
+  .terms-box {
+    background: #fff;
+    padding: 35px;
+    border-radius: 12px;
+    border-top: 4px solid var(--gold);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+  .terms-box h1 { color: var(--green); font-size: 26px; margin-bottom: 8px; }
+  .terms-box h2 { color: var(--green); font-size: 20px; margin: 28px 0 12px; }
+  .terms-box h3 { color: var(--green-dark); font-size: 16px; margin: 18px 0 8px; }
+  .terms-box p { color: #444; font-size: 15px; margin-bottom: 14px; }
+  .terms-box ul { margin: 0 0 14px 20px; color: #444; font-size: 15px; }
+  .terms-box ul li { margin-bottom: 10px; }
+  .terms-box a { color: var(--green); font-weight: 600; text-decoration: none; }
+  .terms-box a:hover { color: var(--gold); text-decoration: underline; }
+  .last-updated { font-size: 13px; color: #888; font-style: italic; margin-bottom: 20px; }
+
+  /* Professional Footer Layout — matches index.html */
+  footer {
+    background: var(--green-dark);
+    color: #e8e8e8;
+    padding: 60px 20px 20px;
+  }
+  .footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    text-align: left;
+  }
+  .footer-brand img { height: 45px; margin-bottom: 15px; opacity: 0.95; }
+  .footer-brand p { font-size: 14px; opacity: 0.85; margin-bottom: 20px; max-width: 320px; line-height: 1.5; }
+  .footer-links h4 { color: var(--gold); margin-bottom: 15px; font-size: 16px; letter-spacing: 0.5px; }
+  .footer-links a { display: block; color: #ccc; text-decoration: none; margin-bottom: 10px; font-size: 14px; transition: 0.2s; }
+  .footer-links a:hover { color: #fff; padding-left: 3px; }
+  .socials { margin: 15px 0 20px; display: flex; gap: 8px; }
+  .socials a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--gold); color: var(--green-dark); font-weight: 700;
+    text-decoration: none; font-size: 14px; transition: 0.2s;
+  }
+  .socials a:hover { background: #fff; }
+  .back-to-top {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: 0.2s;
+  }
+  .back-to-top:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--gold);
+  }
+  .footer-bottom {
+    background: var(--gold);
+    color: var(--green-dark);
+    margin: 0;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🎓 <span>Admissions Open 2026–2027</span>
+  <a href="admission.html">Apply Now →</a>
+</div>
+
+<header>
+  <div class="brand">
+    <img loading="lazy" src="images/logo-s.png" alt="Loaba Nursery and Primary School">
+  </div>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
+</header>
+
+<div class="side-menu" id="sideMenu">
+  <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">✕</button>
+  <a href="index.html">Home</a>
+  
+  <button class="dropdown-btn" onclick="toggleDropdown(this)">About Us</button>
+  <div class="dropdown-container">
+    <a href="management.html">Management</a>
+    <a href="about.html">About Us</a>
+    <a href="code-of-conduct.html">Code of Conduct</a>
+  </div>
+
+  <a href="admission.html">Admissions</a>
+  <a href="facilities.html">Facilities</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<div class="page-hero">
+  <h1>Terms and Conditions</h1>
+  <p>Guidelines and usage terms for Loaba Nursery and Primary School website.</p>
+</div>
+
+<section>
+  <div class="terms-box">
+    <p class="last-updated">Last updated: October 27, 2026</p>
+    <p>Please read these terms and conditions carefully before using Our Service.</p>
+
+    <h2>Interpretation and Definitions</h2>
+    <h3>Interpretation</h3>
+    <p>The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+
+    <h3>Definitions</h3>
+    <p>For the purposes of these Terms and Conditions:</p>
+    <ul>
+      <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.</li>
+      <li><strong>Country/State</strong> refers to: Tamil Nadu, India.</li>
+      <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in these Terms and Conditions) refers to Loaba Nursery and Primary School, Main Street, Mudivaithanendal, Thoothukudi.</li>
+      <li><strong>Device</strong> means any device that can access the Service such as a computer, a cell phone or a digital tablet.</li>
+      <li><strong>Service</strong> refers to the Website.</li>
+      <li><strong>Terms and Conditions</strong> (also referred to as "Terms") means these Terms and Conditions, including any documents expressly incorporated by reference, which govern Your access to and use of the Service and form the entire agreement between You and the Company regarding the Service.</li>
+      <li><strong>Third-Party Social Media Service</strong> means any services or content (including data, information, products or services) provided by a third party that is displayed, included, made available, or linked to through the Service.</li>
+      <li><strong>Website</strong> refers to Loaba Nursery and Primary School, accessible from <a href="https://loabaschool.github.io/" target="_blank" rel="noopener noreferrer">https://loabaschool.github.io/</a></li>
+      <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
+    </ul>
+
+    <h2>Acknowledgment</h2>
+    <p>These are the Terms and Conditions governing the use of this Service and the agreement between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.</p>
+    <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users and others who access or use the Service.</p>
+    <p>By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.</p>
+    <p>This website is intended for use by parents, guardians, and prospective or current members of the school community who are 18 years of age or older. Where information relating to a student is submitted (for example, through our Admission Inquiry form), it is understood that this is done by a parent or legal guardian on the student's behalf.</p>
+    <p>Your access to and use of the Service is also subject to Our Privacy Policy, which describes how We collect, use, and disclose personal information. Please read Our Privacy Policy carefully before using Our Service.</p>
+
+    <h2>Links to Other Websites</h2>
+    <p>Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.</p>
+    <p>The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such websites or services.</p>
+    <p>We strongly advise You to read the terms and conditions and privacy policies of any third-party websites or services that You visit.</p>
+
+    <h3>Links from a Third-Party Social Media Service</h3>
+    <p>The Service may display, include, make available, or link to content or services provided by a Third-Party Social Media Service. A Third-Party Social Media Service is not owned or controlled by the Company, and the Company does not endorse or assume responsibility for any Third-Party Social Media Service.</p>
+    <p>You acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with Your access to or use of any Third-Party Social Media Service, including any content, goods, or services made available through them. Your use of any Third-Party Social Media Service is governed by that Third-Party Social Media Service's terms and privacy policies.</p>
+
+    <h2>Termination</h2>
+    <p>We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions.</p>
+    <p>Upon termination, Your right to use the Service will cease immediately.</p>
+
+    <h2>Limitation of Liability</h2>
+    <p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased anything through the Service.</p>
+    <p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of these Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.</p>
+    <p>Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law.</p>
+
+    <h2>"AS IS" and "AS AVAILABLE" Disclaimer</h2>
+    <p>The Service is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and on behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory or otherwise, with respect to the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems or services, operate without interruption, meet any performance or reliability standards or be error free or that any errors or defects can or will be corrected.</p>
+    <p>Without limiting the foregoing, neither the Company nor any of the company's provider makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components.</p>
+    <p>Some jurisdictions do not allow the exclusion of certain types of warranties or limitations on applicable statutory rights of a consumer, so some or all of the above exclusions and limitations may not apply to You. But in such a case the exclusions and limitations set forth in this section shall be applied to the greatest extent enforceable under applicable law.</p>
+
+    <h2>Governing Law</h2>
+    <p>The laws of the Country/State, excluding its conflicts of law rules, shall govern these Terms and Your use of the Service. Your use of the Application may also be subject to other local, state, national, or international laws.</p>
+
+    <h2>Disputes Resolution</h2>
+    <p>If You have any concern or dispute about the Service, You agree to first try to resolve the dispute informally by contacting the Company.</p>
+
+    <h2>For European Union (EU) Users</h2>
+    <p>If You are a European Union consumer, you will benefit from any mandatory provisions of the law of the country in which You are resident.</p>
+
+    <h2>United States Legal Compliance</h2>
+    <p>You represent and warrant that (i) You are not located in a country that is subject to the United States government embargo, or that has been designated by the United States government as a "terrorist supporting" country, and (ii) You are not listed on any United States government list of prohibited or restricted parties.</p>
+
+    <h2>Severability and Waiver</h2>
+    <h3>Severability</h3>
+    <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect.</p>
+    <h3>Waiver</h3>
+    <p>Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not affect a party's ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach.</p>
+
+    <h2>Translation Interpretation</h2>
+    <p>These Terms and Conditions may have been translated if We have made them available to You on our Service. You agree that the original English text shall prevail in the case of a dispute.</p>
+
+    <h2>Changes to These Terms and Conditions</h2>
+    <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at Our sole discretion.</p>
+    <p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the Service.</p>
+
+   <h2>Contact Us</h2>
+    <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
+    <ul>
+      <li>By email: <a href="mailto:loabaschoolmudivai@gmail.com">loabaschoolmudivai@gmail.com</a></li>
+      <li>By visiting this page on our website: <a href="https://loabaschool.github.io/contact.html">https://loabaschool.github.io/contact.html</a></li>
+      <li>By phone: <a href="tel:9442522311">9442522311</a></li>
+      <li>By mail: Loaba Nursery and Primary School, Main Street, Mudivaithanendal, Thoothukudi 628102</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img loading="lazy" src="images/logo-u.png" alt="Loaba School Logo">
+      <p>Loaba Nursery and Primary School stands as a polestar in Thoothukudi District, celebrating 30 years of educational service since its founding in 1996.</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/loabaschoolmudivai" title="Facebook" target="_blank" rel="noopener noreferrer">f</a>
+        <a href="https://instagram.com/loabaschool" title="Instagram" target="_blank" rel="noopener noreferrer">I</a>
+        <a href="https://wa.me/919442522311" title="WhatsApp" target="_blank" rel="noopener noreferrer">W</a>
+      </div>
+      <a href="#" class="back-to-top">↑ BACK TO TOP</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Site Map</h4>
+      <a href="index.html">Homepage</a>
+      <a href="about.html">About School</a>
+      <a href="management.html">Management</a>
+      <a href="facilities.html">Facilities</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Legal & Info</h4>
+      <a href="terms.html" style="color: var(--gold); font-weight: 600;">Terms & Conditions</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 1996–2026 Loaba Nursery and Primary School. All rights reserved.
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('sideMenu').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+
+function toggleDropdown(btn) {
+  btn.classList.toggle('active');
+  const container = btn.nextElementSibling;
+  if (container.style.display === 'block') {
+    container.style.display = 'none';
+  } else {
+    container.style.display = 'block';
+  }
+}
+</script>
+
+</body>
+</html>
